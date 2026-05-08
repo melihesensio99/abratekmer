@@ -374,7 +374,7 @@ export default function HeroSection() {
                         aria-label={social.icon}
                       >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                          <path fillRule={social.icon === "instagram" || social.icon === "facebook" ? "evenodd" : "none"} d={social.path} clipRule={social.icon === "instagram" || social.icon === "facebook" ? "evenodd" : "none"} />
+                          <path fillRule={social.icon === "instagram" || social.icon === "facebook" ? "evenodd" : "nonzero"} d={social.path} clipRule={social.icon === "instagram" || social.icon === "facebook" ? "evenodd" : "nonzero"} />
                         </svg>
                       </motion.a>
                     ))}

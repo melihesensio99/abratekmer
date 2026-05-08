@@ -117,8 +117,8 @@ export default function FeaturesSection() {
           className="text-center mb-16"
         >
           <motion.span 
-            initial={{ opacity: 0, tracking: "0.1em" }}
-            whileInView={{ opacity: 1, tracking: "0.2em" }}
+            initial={{ opacity: 0, letterSpacing: "0.1em" }}
+            whileInView={{ opacity: 1, letterSpacing: "0.2em" }}
             transition={{ duration: 1, delay: 0.2 }}
             className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block"
           >
