@@ -29,7 +29,9 @@ export default function StickyBar() {
           <div className="max-w-2xl mx-auto w-full bg-white/80 backdrop-blur-xl border border-black/10 rounded-2xl p-3 sm:p-4 shadow-2xl flex items-center justify-between gap-4 pointer-events-auto">
             <div className="flex items-center gap-3">
               <div className="hidden xs:flex w-12 h-12 bg-black rounded-xl flex-shrink-0 items-center justify-center">
-                <svg className="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
+                <svg className="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-0.5">

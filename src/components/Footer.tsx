@@ -18,15 +18,12 @@ export default function Footer() {
           <div className="space-y-4">
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="relative w-36 h-12 bg-white/90 rounded-lg px-2 py-1"
+              className="flex items-center gap-2 group cursor-pointer"
             >
-              <Image
-                src="/images/abra-logo.jpg"
-                alt="ABRA Product Design"
-                fill
-                className="object-contain p-0.5"
-                sizes="144px"
-              />
+              <span className="text-2xl font-black tracking-tighter text-white group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-noto)" }}>
+                ABRA
+              </span>
+              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
             </motion.div>
             <p className="text-white/30 text-sm leading-relaxed font-light">
               Akıllı güvenlik çözümleri ile evinizi daha güvenli hale getirin.
