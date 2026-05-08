@@ -63,14 +63,14 @@ export default function RootLayout({
   return (
     <html
       lang="tr"
-      className={`${poppins.variable} ${nunitoSans.variable} ${notoSans.variable} h-full antialiased`}
+      className={`${poppins.variable} ${nunitoSans.variable} ${notoSans.variable} antialiased`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#0a0a0a" />
       </head>
       <body
-        className="min-h-full flex flex-col"
+        className="min-h-screen flex flex-col"
         style={{ fontFamily: "var(--font-nunito), var(--font-noto), sans-serif" }}
       >
         {children}

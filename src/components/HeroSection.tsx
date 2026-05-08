@@ -24,7 +24,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section id="hero" className="relative bg-white pt-28 pb-20 text-black overflow-hidden">
+    <section id="hero" className="relative bg-white pt-20 sm:pt-28 pb-12 sm:pb-20 text-black overflow-hidden">
       {/* Background Accent */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       
@@ -33,9 +33,8 @@ export default function HeroSection() {
           
           {/* Left - Product Gallery */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             className="flex flex-col gap-4"
           >
             <div className="relative aspect-square w-full rounded-2xl bg-black overflow-hidden group/gallery border border-black/5">
@@ -116,16 +115,14 @@ export default function HeroSection() {
 
           {/* Right - Product Info */}
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             className="flex flex-col"
           >
             <div className="mb-10">
               <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
                 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 text-black" style={{ fontFamily: "var(--font-noto)" }}
               >
                 ABRA Smart Lock PRO
