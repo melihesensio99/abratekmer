@@ -21,7 +21,7 @@ export default function ContactSection() {
       <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-primary/5 rounded-full blur-[120px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className={`text-center mb-16 transition-all duration-700 opacity-100 translate-y-0`}>
           <span className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block">İLETİŞİM</span>
           <h2 className="heading-section text-white mb-6" style={{ fontFamily: "var(--font-noto)" }}>
             Bizimle İletişime Geçin
@@ -31,7 +31,7 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className={`grid md:grid-cols-3 gap-6 max-w-4xl mx-auto transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className={`grid md:grid-cols-3 gap-6 max-w-4xl mx-auto transition-all duration-700 opacity-100 translate-y-0`}>
           {/* Address */}
           <div className="glass rounded-2xl p-6 text-center group hover:border-primary/30 transition-all duration-300">
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
@@ -84,7 +84,7 @@ export default function ContactSection() {
         </div>
 
         {/* Company website link */}
-        <div className={`text-center mt-10 transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className={`text-center mt-10 transition-all duration-700 opacity-100 translate-y-0`}>
           <a
             href="https://abratasarim.com/tr"
             target="_blank"

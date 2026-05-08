@@ -110,10 +110,8 @@ export default function FeaturesSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
           <motion.span 
@@ -131,10 +129,8 @@ export default function FeaturesSection() {
         </motion.div>
 
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          initial={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
           className="flex justify-center gap-4 mb-12 flex-wrap"
         >
           {features.map((feature, index) => (

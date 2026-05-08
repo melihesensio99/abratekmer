@@ -30,7 +30,7 @@ export default function BuySection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className={`text-center mb-16 transition-all duration-700 opacity-100 translate-y-0`}>
           <span className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block">SATIN AL</span>
           <h2 className="heading-section text-white mb-6" style={{ fontFamily: "var(--font-noto)" }}>
             Hemen Sahip Olun
@@ -40,13 +40,13 @@ export default function BuySection() {
           </p>
         </div>
 
-        <div className={`max-w-4xl mx-auto transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className={`max-w-4xl mx-auto transition-all duration-700 opacity-100 translate-y-0`}>
           <div className="glass rounded-3xl p-8 sm:p-12">
             <div className="grid md:grid-cols-2 gap-10 items-center">
               {/* Product Image */}
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-surface-light to-surface">
                 <Image
-                  src="/images/banner-1.png"
+                  src="/images/1.png"
                   alt="ABRA Smart Lock PRO"
                   fill
                   className="object-cover"

@@ -24,10 +24,8 @@ export default function SpecsSection() {
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
           <span className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block">TEKNİK</span>

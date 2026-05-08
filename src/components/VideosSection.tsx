@@ -17,11 +17,8 @@ const videos = [
 function VideoCard({ video, index, onClick }: { video: typeof videos[0]; index: number; onClick: () => void }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
+      initial={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       className="video-card group cursor-pointer"
       onClick={onClick}
     >
@@ -81,10 +78,8 @@ export default function VideosSection() {
         
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
           >
             <div className="text-left">
