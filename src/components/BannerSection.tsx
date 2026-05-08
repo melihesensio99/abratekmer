@@ -129,15 +129,15 @@ export default function BannerSection() {
         <div className={`mb-16 group/s1 reveal delay-300 ${isVisible ? "active" : ""}`}>
           <div className="relative w-full rounded-[3rem] overflow-hidden bg-black border border-white/5 shadow-2xl shadow-black/80">
             {/* Buttons positioned ABOVE the banner on mobile, OVER on desktop */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 p-4 sm:absolute sm:top-10 sm:left-0 sm:right-0 z-20">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 p-4 sm:absolute sm:top-10 sm:left-0 sm:right-0 z-50 pointer-events-auto">
               {showcase1.map((item, index) => (
                 <button
                   key={item.id}
                   onClick={() => setActiveTab1(index)}
-                  className={`px-4 sm:px-10 py-2 sm:py-3.5 rounded-full text-xs sm:text-base font-extrabold transition-all duration-300 border backdrop-blur-xl pointer-events-auto ${
+                  className={`px-4 sm:px-10 py-2 sm:py-3.5 rounded-full text-xs sm:text-base font-extrabold transition-all duration-300 border backdrop-blur-xl pointer-events-auto cursor-pointer ${
                     activeTab1 === index 
                       ? "bg-primary border-primary text-white shadow-xl shadow-primary/40" 
-                      : "bg-white/20 sm:bg-black/40 border-white/10 text-white/50 hover:border-white/30 hover:text-white"
+                      : "bg-white/30 sm:bg-black/40 border-white/10 text-white/50 hover:border-white/30 hover:text-white"
                   }`}
                   style={{ fontFamily: 'var(--font-noto)' }}
                 >
