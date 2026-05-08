@@ -41,10 +41,8 @@ export default function HeroSection() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentImage}
-                  initial={{ opacity: 0, scale: 1.1 }}
+                  initial={{ opacity: 1, scale: 1 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
                   className="relative w-full h-full"
                 >
                   <Image

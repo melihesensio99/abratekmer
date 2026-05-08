@@ -40,10 +40,8 @@ export default function SpecsSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Specs Card */}
           <motion.div 
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             className="relative"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-transparent rounded-[2.5rem] blur opacity-50" />
@@ -52,10 +50,8 @@ export default function SpecsSection() {
                 {specs.map((spec, index) => (
                   <motion.div 
                     key={spec.label} 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 * index }}
+                    initial={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 1, y: 0 }}
                     className={`group flex items-center justify-between py-5 transition-all duration-300 ${index < specs.length - 1 ? "border-b border-white/5" : ""}`}
                   >
                     <div className="flex items-center gap-4">
@@ -75,10 +71,8 @@ export default function SpecsSection() {
 
           {/* Specs Image Container */}
           <motion.div 
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             className="relative group"
           >
             <div className="absolute -inset-4 bg-primary/5 rounded-[3rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
