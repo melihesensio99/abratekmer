@@ -90,7 +90,7 @@ export default function SpecsSection() {
               className="relative rounded-[2.5rem] overflow-hidden border border-white/10 bg-black/40 p-4 shadow-2xl shadow-black/50"
             >
               <Image
-                src="/images/banner-3.png"
+                src="/images/3.png"
                 alt="ABRA Smart Lock PRO Teknik Özellikler"
                 width={1000}
                 height={800}

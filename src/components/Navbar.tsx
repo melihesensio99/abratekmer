@@ -38,16 +38,11 @@ export default function Navbar() {
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-60 h-18 bg-white/90 rounded-xl px-5 py-3 group-hover:bg-white transition-colors">
-              <Image
-                src="/images/abra-logo.jpg"
-                alt="ABRA Product Design"
-                fill
-                className="object-contain p-1"
-                sizes="240px"
-              />
-            </div>
+          <Link href="/" className="flex items-center gap-2 group">
+            <span className="text-2xl font-black tracking-tighter text-black group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-noto)" }}>
+              ABRA
+            </span>
+            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
           </Link>
 
           {/* Desktop Nav */}
