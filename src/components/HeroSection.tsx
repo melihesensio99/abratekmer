@@ -7,6 +7,14 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const [openAccordions, setOpenAccordions] = useState<string[]>(["desc"]);
+  const [touchStart, setTouchStart] = useState(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touchEnd = e.changedTouches[0].clientX;
+    if (touchStart - touchEnd > 50) setCurrentImage((prev) => (prev + 1) % images.length);
+    if (touchStart - touchEnd < -50) setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   const toggleAccordion = (id: string) => {
     setOpenAccordions((prev) => 
@@ -37,7 +45,11 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-col gap-4"
           >
-            <div className="relative aspect-square w-full rounded-2xl bg-black overflow-hidden group/gallery border border-black/5">
+            <div 
+              className="relative aspect-square w-full rounded-2xl bg-black overflow-hidden group/gallery border border-black/5 touch-pan-y"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentImage}

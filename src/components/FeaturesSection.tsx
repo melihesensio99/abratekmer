@@ -224,7 +224,7 @@ export default function FeaturesSection() {
         <div className="relative group">
           <div
             ref={carouselRef}
-            className="relative rounded-3xl overflow-hidden bg-black select-none cursor-grab active:cursor-grabbing h-[300px] sm:h-[450px] lg:h-[600px] xl:h-[700px]"
+            className="relative rounded-3xl overflow-hidden bg-black select-none cursor-grab active:cursor-grabbing h-[300px] sm:h-[450px] lg:h-[600px] xl:h-[700px] touch-pan-y"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}

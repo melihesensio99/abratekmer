@@ -8,7 +8,15 @@ export default function BannerSection() {
   const [activeTab1, setActiveTab1] = useState(0);
   const [activeTab2, setActiveTab2] = useState(0);
   const [activeTab3, setActiveTab3] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX);
+  const handleTouchEnd = (e: React.TouchEvent, next: () => void, prev: () => void) => {
+    const touchEnd = e.changedTouches[0].clientX;
+    if (touchStart - touchEnd > 50) next();
+    if (touchStart - touchEnd < -50) prev();
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -152,7 +160,11 @@ export default function BannerSection() {
               <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
             </button>
 
-            <div className="relative aspect-video w-full">
+            <div 
+              className="relative aspect-video w-full touch-pan-y"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={(e) => handleTouchEnd(e, nextTab1, prevTab1)}
+            >
               {showcase1.map((item, index) => (
                 <div
                   key={item.id}
@@ -164,7 +176,7 @@ export default function BannerSection() {
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-contain"
+                    className="object-contain pointer-events-none"
                   />
                 </div>
               ))}
@@ -207,7 +219,11 @@ export default function BannerSection() {
               <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
             </button>
 
-            <div className="relative aspect-video w-full">
+            <div 
+              className="relative aspect-video w-full touch-pan-y"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={(e) => handleTouchEnd(e, nextTab2, prevTab2)}
+            >
               {showcase2.map((item, index) => (
                 <div
                   key={item.id}
@@ -219,7 +235,7 @@ export default function BannerSection() {
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-contain"
+                    className="object-contain pointer-events-none"
                   />
                 </div>
               ))}
@@ -262,7 +278,11 @@ export default function BannerSection() {
               <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
             </button>
 
-            <div className="relative aspect-video w-full">
+            <div 
+              className="relative aspect-video w-full touch-pan-y"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={(e) => handleTouchEnd(e, nextTab3, prevTab3)}
+            >
               {showcase3.map((item, index) => (
                 <div
                   key={item.id}
@@ -274,7 +294,7 @@ export default function BannerSection() {
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-contain"
+                    className="object-contain pointer-events-none"
                   />
                 </div>
               ))}
