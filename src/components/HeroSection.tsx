@@ -105,17 +105,20 @@ export default function HeroSection() {
               </button>
             </div>
             
-            <div className="flex gap-3 overflow-x-auto py-2 snap-x hide-scrollbar relative z-[100]">
+            <div className="flex gap-3 overflow-x-auto py-2 snap-x hide-scrollbar relative z-[100] touch-manipulation">
               {images.map((img, idx) => (
-                <button
+                <div
                   key={idx}
+                  role="button"
+                  tabIndex={0}
                   onClick={() => setCurrentImage(idx)}
-                  className={`relative flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg border-2 overflow-hidden bg-[#f8f9fa] transition-all duration-300 pointer-events-auto cursor-pointer ${
+                  onTouchEnd={(e) => { e.preventDefault(); setCurrentImage(idx); }}
+                  className={`relative flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg border-2 overflow-hidden bg-[#f8f9fa] transition-all duration-300 pointer-events-auto cursor-pointer select-none ${
                     currentImage === idx ? "border-primary shadow-lg shadow-primary/20 opacity-100" : "border-transparent opacity-50"
                   }`}
                 >
                   <Image src={img.src} alt={img.alt} fill className="object-cover pointer-events-none" />
-                </button>
+                </div>
               ))}
             </div>
           </motion.div>
