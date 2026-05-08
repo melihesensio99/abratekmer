@@ -88,37 +88,34 @@ export default function HeroSection() {
                 {currentImage + 1} / {images.length}
               </div>
 
-              {/* Image Navigation Arrows */}
+              {/* Image Navigation Arrows - Always visible on mobile */}
               <button 
-                onClick={() => setCurrentImage((prev) => (prev - 1 + images.length) % images.length)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-all opacity-0 group-hover/gallery:opacity-100 backdrop-blur-sm z-20"
+                onClick={(e) => { e.preventDefault(); setCurrentImage((prev) => (prev - 1 + images.length) % images.length); }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 flex items-center justify-center transition-all opacity-100 sm:opacity-0 sm:group-hover/gallery:opacity-100 backdrop-blur-sm z-30 pointer-events-auto"
                 aria-label="Previous image"
               >
                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
               </button>
               <button 
-                onClick={() => setCurrentImage((prev) => (prev + 1) % images.length)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-all opacity-0 group-hover/gallery:opacity-100 backdrop-blur-sm z-20"
+                onClick={(e) => { e.preventDefault(); setCurrentImage((prev) => (prev + 1) % images.length); }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 flex items-center justify-center transition-all opacity-100 sm:opacity-0 sm:group-hover/gallery:opacity-100 backdrop-blur-sm z-30 pointer-events-auto"
                 aria-label="Next image"
               >
                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
               </button>
             </div>
             
-            {/* Thumbnails */}
-            <div className="flex gap-3 overflow-x-auto pb-4 snap-x hide-scrollbar">
+            <div className="flex gap-3 overflow-x-auto py-2 snap-x hide-scrollbar relative z-30">
               {images.map((img, idx) => (
-                <motion.button
+                <button
                   key={idx}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setCurrentImage(idx)}
-                  className={`relative flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg border-2 overflow-hidden bg-[#f8f9fa] transition-all duration-300 ${
-                    currentImage === idx ? "border-primary shadow-lg shadow-primary/20" : "border-transparent hover:border-black/10 opacity-70 hover:opacity-100"
+                  onClick={(e) => { e.preventDefault(); setCurrentImage(idx); }}
+                  className={`relative flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg border-2 overflow-hidden bg-[#f8f9fa] transition-all duration-300 pointer-events-auto ${
+                    currentImage === idx ? "border-primary shadow-lg shadow-primary/20 opacity-100" : "border-transparent opacity-50"
                   }`}
                 >
-                  <Image src={img.src} alt={img.alt} fill className="object-cover" />
-                </motion.button>
+                  <Image src={img.src} alt={img.alt} fill className="object-cover pointer-events-none" />
+                </button>
               ))}
             </div>
           </motion.div>

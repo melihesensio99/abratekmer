@@ -133,11 +133,11 @@ export default function BannerSection() {
               {showcase1.map((item, index) => (
                 <button
                   key={item.id}
-                  onClick={(e) => { e.stopPropagation(); setActiveTab1(index); }}
+                  onClick={() => setActiveTab1(index)}
                   className={`px-4 sm:px-10 py-2 sm:py-3.5 rounded-full text-xs sm:text-base font-extrabold transition-all duration-300 border backdrop-blur-xl pointer-events-auto ${
                     activeTab1 === index 
                       ? "bg-primary border-primary text-white shadow-xl shadow-primary/40" 
-                      : "bg-white/10 sm:bg-black/40 border-white/10 text-white/50 hover:border-white/30 hover:text-white"
+                      : "bg-white/20 sm:bg-black/40 border-white/10 text-white/50 hover:border-white/30 hover:text-white"
                   }`}
                   style={{ fontFamily: 'var(--font-noto)' }}
                 >
@@ -192,11 +192,11 @@ export default function BannerSection() {
               {showcase2.map((item, index) => (
                 <button
                   key={item.id}
-                  onClick={(e) => { e.stopPropagation(); setActiveTab2(index); }}
+                  onClick={() => setActiveTab2(index)}
                   className={`px-4 sm:px-10 py-2 sm:py-3.5 rounded-full text-xs sm:text-base font-extrabold transition-all duration-300 border backdrop-blur-xl pointer-events-auto ${
                     activeTab2 === index 
                       ? "bg-primary border-primary text-white shadow-xl shadow-primary/40" 
-                      : "bg-black/40 border-white/10 text-white/50 hover:border-white/30 hover:text-white"
+                      : "bg-white/20 sm:bg-black/40 border-white/10 text-white/50 hover:border-white/30 hover:text-white"
                   }`}
                   style={{ fontFamily: 'var(--font-noto)' }}
                 >
@@ -251,7 +251,7 @@ export default function BannerSection() {
               {showcase3.map((item, index) => (
                 <button
                   key={item.id}
-                  onClick={(e) => { e.stopPropagation(); setActiveTab3(index); }}
+                  onClick={() => setActiveTab3(index)}
                   className={`px-4 sm:px-10 py-2 sm:py-3.5 rounded-full text-xs sm:text-base font-extrabold transition-all duration-300 border backdrop-blur-xl pointer-events-auto ${
                     activeTab3 === index 
                       ? "bg-primary border-primary text-white shadow-xl shadow-primary/40" 
