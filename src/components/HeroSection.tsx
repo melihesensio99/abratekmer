@@ -4,9 +4,46 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
+const stores = [
+  {
+    name: "Trendyol",
+    url: "https://www.trendyol.com",
+    color: "#f27a1a",
+    logo: (
+      <svg viewBox="0 0 120 40" className="h-7 w-auto" fill="none">
+        <rect width="120" height="40" rx="6" fill="#f27a1a"/>
+        <text x="60" y="27" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16" fontFamily="Arial">Trendyol</text>
+      </svg>
+    ),
+  },
+  {
+    name: "Amazon",
+    url: "https://www.amazon.com.tr",
+    color: "#ff9900",
+    logo: (
+      <svg viewBox="0 0 120 40" className="h-7 w-auto" fill="none">
+        <rect width="120" height="40" rx="6" fill="#232f3e"/>
+        <text x="60" y="27" textAnchor="middle" fill="#ff9900" fontWeight="bold" fontSize="16" fontFamily="Arial">amazon</text>
+      </svg>
+    ),
+  },
+  {
+    name: "Hepsiburada",
+    url: "https://www.hepsiburada.com",
+    color: "#ff6000",
+    logo: (
+      <svg viewBox="0 0 120 40" className="h-7 w-auto" fill="none">
+        <rect width="120" height="40" rx="6" fill="#ff6000"/>
+        <text x="60" y="27" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13" fontFamily="Arial">Hepsiburada</text>
+      </svg>
+    ),
+  },
+];
+
 export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
+  const [storeModal, setStoreModal] = useState(false);
 
   const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX);
   const handleTouchEnd = (e: React.TouchEvent) => {
@@ -180,23 +217,36 @@ export default function HeroSection() {
               ))}
             </div>
 
-            {/* Stats row */}
+            {/* App Store / Play Store */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.75 }}
-              className="grid grid-cols-3 gap-3 mb-8 p-4 rounded-2xl bg-black/[0.03] border border-black/5"
+              className="mb-8"
             >
-              {[
-                { val: "<1s",  label: "Açılma süresi" },
-                { val: "6ay",  label: "Pil ömrü"       },
-                { val: "5dk",  label: "Kurulum"         },
-              ].map((s, i) => (
-                <div key={i} className="text-center">
-                  <p className="text-2xl font-extrabold text-primary">{s.val}</p>
-                  <p className="text-[11px] text-black/50 font-semibold uppercase tracking-wide mt-0.5">{s.label}</p>
-                </div>
-              ))}
+              <p className="text-xs font-bold text-black/40 uppercase tracking-widest mb-3">Mobil Uygulamayı İndir</p>
+              <div className="flex gap-3 flex-wrap">
+                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 bg-black text-white px-4 py-2.5 rounded-xl hover:bg-gray-900 transition-all hover:-translate-y-0.5 shadow-md">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.77M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  <div>
+                    <p className="text-[10px] leading-none opacity-70">Download on the</p>
+                    <p className="text-sm font-bold leading-tight">App Store</p>
+                  </div>
+                </a>
+                <a href="https://play.google.com" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 bg-black text-white px-4 py-2.5 rounded-xl hover:bg-gray-900 transition-all hover:-translate-y-0.5 shadow-md">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3.18 23.76c.3.17.64.24.99.19l12.6-7.27-2.75-2.75-10.84 9.83zM.5 1.4C.18 1.72 0 2.22 0 2.89v18.22c0 .67.18 1.17.5 1.49l.08.07L10.89 12.5v-.24L.58 1.33.5 1.4zM21.64 10.65l-2.95-1.7-3.19 3.19 3.19 3.19 2.97-1.71c.85-.49.85-1.28-.02-1.97zM4.17.24L16.77 7.5l-2.75 2.75L3.18.42c.3-.17.66-.21.99-.18z"/>
+                  </svg>
+                  <div>
+                    <p className="text-[10px] leading-none opacity-70">Get it on</p>
+                    <p className="text-sm font-bold leading-tight">Google Play</p>
+                  </div>
+                </a>
+              </div>
             </motion.div>
 
             {/* CTA */}
@@ -206,15 +256,13 @@ export default function HeroSection() {
               transition={{ delay: 0.85 }}
               className="space-y-4"
             >
-              <a
-                href="https://www.trendyol.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => setStoreModal(true)}
                 className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-2xl font-bold transition-all text-center shadow-xl shadow-primary/30 flex items-center justify-center gap-3 w-full text-lg hover:shadow-primary/50 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" /></svg>
-                Trendyol&apos;dan Satın Al
-              </a>
+                Satın Al
+              </button>
               <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
                 {["✓ 2 Yıl Garanti", "✓ Aynı Gün Kargo", "✓ Ücretsiz Destek"].map((b, i) => (
                   <span key={i} className="text-xs font-bold text-black/50">{b}</span>
@@ -224,6 +272,65 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+
+      {/* ── Store Modal ── */}
+      <AnimatePresence>
+        {storeModal && (
+          <m.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+            onClick={() => setStoreModal(false)}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
+
+            {/* Card */}
+            <m.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ type: "spring", stiffness: 340, damping: 28 }}
+              className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 z-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close */}
+              <button onClick={() => setStoreModal(false)}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center transition-colors">
+                <svg className="w-5 h-5 text-black/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <h3 className="text-2xl font-extrabold text-black mb-1" style={{ fontFamily: "var(--font-noto)" }}>Nereden Satın Almak İstersiniz?</h3>
+              <p className="text-black/50 text-sm mb-7">Güvendiğiniz platformdan kolayca sipariş verin</p>
+
+              <div className="space-y-3">
+                {stores.map((store) => (
+                  <a
+                    key={store.name}
+                    href={store.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between w-full px-5 py-4 rounded-2xl border-2 border-black/8 hover:border-primary/40 hover:bg-primary/[0.03] transition-all group"
+                  >
+                    <div className="flex items-center gap-3">
+                      {store.logo}
+                      <span className="font-bold text-black text-base">{store.name}</span>
+                    </div>
+                    <svg className="w-5 h-5 text-black/30 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+
+              <p className="text-center text-black/30 text-xs mt-6">Güvenli ödeme • Hızlı kargo • Kolay iade</p>
+            </m.div>
+          </m.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
