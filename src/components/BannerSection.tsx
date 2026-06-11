@@ -124,31 +124,6 @@ export default function BannerSection() {
           />
         </div>
 
-        {/* 5. En Alttaki Tam Genişlikteki Remote Lock Görseli (Büyük Alan) */}
-        <div className={`pt-16 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="relative w-full overflow-hidden rounded-[2rem] flex flex-col items-stretch bg-[#0c0c0c] border border-white/5 p-6 sm:p-10">
-            {/* Görsel Üst Başlık Grubu */}
-            <div className="mb-8 max-w-2xl">
-              <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-2 block">KONTROL SİZDE</span>
-              <h3 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4" style={{ fontFamily: "var(--font-noto)" }}>
-                Remote Lock / Unlock
-              </h3>
-              <p className="text-white/60 text-base sm:text-lg leading-relaxed">
-                Nerede olursanız olun, mobil uygulama üzerinden kapınızı uzaktan yönetin ve durum bildirimlerini anlık takip edin.
-              </p>
-            </div>
-
-            {/* Genişletilmiş Tam Boyut Görsel */}
-            <div className="w-full relative rounded-2xl overflow-hidden bg-[#121212] p-2 flex items-center justify-center">
-              <img
-                src="/images/new/remote_unlock.jpeg"
-                alt="Remote Lock / Unlock - ABRA App"
-                className="w-full h-auto object-contain max-h-[85vh]"
-              />
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
   );
