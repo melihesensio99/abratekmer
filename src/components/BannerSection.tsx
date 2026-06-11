@@ -2,14 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Şeffaf, kutusuz kart tasarımı. Görseller direkt şeffaf arka planla yandaki yazıyla hizalanır.
-function FeatureCard({
+// Bento Grid için kutulu tasarım bileşeni. Grid span'e göre dikey veya yatay olarak şekil alabilir.
+function BentoCard({
   src,
   alt,
   tag,
   title,
   desc,
   points,
+  className = "",
 }: {
   src: string;
   alt: string;
@@ -17,19 +18,21 @@ function FeatureCard({
   title: string;
   desc?: string;
   points?: string[];
+  className?: string;
 }) {
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-8 py-8 transition-all">
-      {/* Görsel - kutusuz, şeffaf */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center">
+    <div className={`flex flex-col justify-between p-8 bg-[#0c0c0c] border border-white/5 rounded-[2rem] transition-all hover:border-white/10 ${className}`}>
+      {/* Görsel Alanı */}
+      <div className="w-full flex items-center justify-center mb-6 overflow-hidden rounded-xl bg-[#121212]/50 p-4" style={{ minHeight: "200px" }}>
         <img
           src={src}
           alt={alt}
-          className="w-full h-auto object-contain max-h-[300px] select-none pointer-events-none"
+          className="w-full h-auto max-h-[240px] object-contain select-none pointer-events-none"
         />
       </div>
-      {/* Metin */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center text-left">
+
+      {/* Metin Alanı */}
+      <div className="flex flex-col text-left">
         {tag && (
           <span className="text-primary font-bold text-xs tracking-[0.2em] uppercase mb-2 block">
             {tag}
@@ -38,12 +41,12 @@ function FeatureCard({
         <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 leading-tight" style={{ fontFamily: "var(--font-noto)" }}>
           {title}
         </h3>
-        {desc && <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-4">{desc}</p>}
+        {desc && <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-4">{desc}</p>}
         {points && (
-          <ul className="space-y-3">
+          <ul className="space-y-2">
             {points.map((pt, idx) => (
-              <li key={idx} className="flex items-start gap-2.5 text-white/80 text-base sm:text-lg leading-relaxed">
-                <span className="text-primary mt-2 flex-shrink-0 text-[10px]">●</span>
+              <li key={idx} className="flex items-start gap-2.5 text-white/80 text-sm sm:text-base leading-relaxed">
+                <span className="text-primary mt-1.5 flex-shrink-0 text-[10px]">●</span>
                 <span>{pt}</span>
               </li>
             ))}
@@ -71,7 +74,7 @@ export default function BannerSection() {
     <section ref={sectionRef} className="pt-8 pb-24 bg-black overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
-        {/* 2. Bölüm Başlığı */}
+        {/* Bölüm Başlığı */}
         <div className={`text-center py-6 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-3 block">NEDEN ABRA?</span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5" style={{ fontFamily: "var(--font-noto)" }}>
@@ -82,19 +85,20 @@ export default function BannerSection() {
           </p>
         </div>
 
-        {/* 4. Yan Yana Grid Özellikler (2. Görseldeki gibi KUTUSUZ ve ŞEFFAF tasarım) */}
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 pt-12">
-          {/* Night Mode */}
-          <FeatureCard
+        {/* Bento / Asimetrik Grid Düzeni */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+          {/* 1. Quiet Unlocking at Night - Dikey Büyük Kart (md:col-span-1) */}
+          <BentoCard
             src="/images/new/16.jpeg"
             alt="Night Mode"
             tag="GÜVENLİK MODU"
             title="Quiet Unlocking at Night"
             desc="Gece geç saatlerde eve döndüğünüzde motor sesini minimuma indirin. Ailenizi ve komşularınızı uyandırmadan sessizce kapınızı açın."
+            className="md:col-span-1"
           />
 
-          {/* Daytime vs Nighttime */}
-          <FeatureCard
+          {/* 2. Daytime vs Nighttime - Geniş Yatay Kart (md:col-span-2) */}
+          <BentoCard
             src="/images/new/17.jpeg"
             alt="Daytime vs Nighttime"
             tag="KİLİT MODLARI"
@@ -103,24 +107,27 @@ export default function BannerSection() {
               "Daytime (Gündüz): Yarım kilit moduyla hızlı çıkış.",
               "Nighttime (Gece): Tam kilit moduyla maksimum güvenlik."
             ]}
+            className="md:col-span-2"
           />
 
-          {/* Emergency Charging */}
-          <FeatureCard
+          {/* 3. Emergency Charging - Geniş Yatay Kart (md:col-span-2) */}
+          <BentoCard
             src="/images/new/18.jpeg"
             alt="USB Charging Backup"
             tag="GÜÇ YÖNETİMİ"
             title="USB-C Acil Şarj Desteği"
             desc="Pil seviyesi bittiğinde, dışarıdan powerbank ve USB-C yardımıyla acil şarj sağlayarak kapıda kalma riskini tamamen yok edin."
+            className="md:col-span-2"
           />
 
-          {/* Sound Alerts */}
-          <FeatureCard
+          {/* 4. Sound Alerts - Dikey Kart (md:col-span-1) */}
+          <BentoCard
             src="/images/new/19.jpeg"
             alt="Sound Alerts"
             tag="AKILLI UYARILAR"
             title="Sound Alerts from ABRA"
             desc="Pil gücü kritik seviyeye ulaştığında hem mobil uygulamadan bildirim alın hem de sesli uyarı tonlarıyla durumu takip edin."
+            className="md:col-span-1"
           />
         </div>
 
