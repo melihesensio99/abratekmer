@@ -13,6 +13,7 @@ const features = [
     stat: "Wi-Fi",
     statLabel: "Bağlantı",
     image: "/images/new/2.jpeg",
+    bg: "#0d0d0d",
   },
   {
     id: "night",
@@ -22,6 +23,7 @@ const features = [
     stat: "<20dB",
     statLabel: "Gürültü Seviyesi",
     image: "/images/new/16.jpeg",
+    bg: "#d8d4ce",
   },
   {
     id: "daynight",
@@ -31,6 +33,7 @@ const features = [
     stat: "2x",
     statLabel: "Güvenlik Modu",
     image: "/images/new/17.jpeg",
+    bg: "#f0f0f0",
   },
   {
     id: "install",
@@ -40,22 +43,23 @@ const features = [
     stat: "5dk",
     statLabel: "Kurulum Süresi",
     image: "/images/new/15.jpeg",
+    bg: "#f0f0f0",
   },
 ];
 
-// All door compatibility images
+// All door compatibility images with matching backgrounds
 const compatibilitySlides = [
-  { src: "/images/new/3.jpeg", alt: "Koyu Ahşap Kapı - ABRA Uyumlu" },
-  { src: "/images/new/4.jpeg", alt: "Açık Ahşap Kapı - ABRA Uyumlu" },
-  { src: "/images/new/5.jpeg", alt: "Beyaz Kapı - ABRA Uyumlu" },
-  { src: "/images/new/6.jpeg", alt: "Bej Kapı - ABRA Uyumlu" },
-  { src: "/images/new/7.jpeg", alt: "Bej Kapı Adaptör - ABRA Uyumlu" },
-  { src: "/images/new/8.jpeg", alt: "Siyah Kapı - ABRA Uyumlu" },
-  { src: "/images/new/9.jpeg", alt: "Gri Kapı - ABRA Uyumlu" },
-  { src: "/images/new/10.jpeg", alt: "Koyu Kapı - ABRA Uyumlu" },
-  { src: "/images/new/11.jpeg", alt: "İç Mekan Kapı - ABRA Uyumlu" },
-  { src: "/images/new/12.jpeg", alt: "Gri Adaptör - ABRA Uyumlu" },
-  { src: "/images/new/13.jpeg", alt: "Kahverengi Kapı - ABRA Uyumlu" },
+  { src: "/images/new/3.jpeg", alt: "Koyu Ahşap Kapı - ABRA Uyumlu",  bg: "#c8b89a" },
+  { src: "/images/new/4.jpeg", alt: "Açık Ahşap Kapı - ABRA Uyumlu",  bg: "#c0a87a" },
+  { src: "/images/new/5.jpeg", alt: "Beyaz Kapı - ABRA Uyumlu",        bg: "#ede8e0" },
+  { src: "/images/new/6.jpeg",  alt: "Bej Kapı - ABRA Uyumlu",          bg: "#e8ddd0" },
+  { src: "/images/new/7.jpeg",  alt: "Bej Kapı Adaptör - ABRA Uyumlu",  bg: "#e5ddd2" },
+  { src: "/images/new/8.jpeg",  alt: "Siyah Kapı - ABRA Uyumlu",        bg: "#111"    },
+  { src: "/images/new/9.jpeg",  alt: "Gri Kapı - ABRA Uyumlu",          bg: "#555"    },
+  { src: "/images/new/10.jpeg", alt: "Koyu Kapı - ABRA Uyumlu",         bg: "#2a2a2a" },
+  { src: "/images/new/11.jpeg", alt: "İç Mekan Kapı - ABRA Uyumlu",     bg: "#f0ebe4" },
+  { src: "/images/new/12.jpeg", alt: "Gri Adaptör - ABRA Uyumlu",       bg: "#c8c0b0" },
+  { src: "/images/new/13.jpeg", alt: "Kahverengi Kapı - ABRA Uyumlu",   bg: "#4a3828" },
 ];
 
 export default function FeaturesSection() {
@@ -137,13 +141,14 @@ export default function FeaturesSection() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative w-full h-[300px] sm:h-[450px] lg:h-[600px] xl:h-[680px] rounded-3xl overflow-hidden bg-black group/feature"
+            className="relative w-full rounded-3xl overflow-hidden group/feature"
+          style={{ background: features[activeTab].bg, aspectRatio: "16/9" }}
           >
             <Image
               src={features[activeTab].image}
               alt={features[activeTab].title}
               fill
-              className="object-cover transition-transform duration-700 group-hover/feature:scale-105"
+              className="object-contain"
               sizes="100vw"
               priority
             />

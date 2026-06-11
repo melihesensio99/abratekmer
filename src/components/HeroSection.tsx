@@ -16,12 +16,13 @@ export default function HeroSection() {
   };
 
   const galleryImages = [
-    { src: "/images/new/14.jpeg", alt: "ABRA Smart Lock PRO", bg: "#f0f0f0", fit: "contain" },
-    { src: "/images/new/8.jpeg",  alt: "ABRA - Siyah Kapı",    bg: "#111",    fit: "cover"   },
-    { src: "/images/new/9.jpeg",  alt: "ABRA - Gri Kapı",      bg: "#e8e4de", fit: "cover"   },
-    { src: "/images/new/11.jpeg", alt: "ABRA - İç Mekan",      bg: "#f5f2ee", fit: "cover"   },
-    { src: "/images/new/10.jpeg", alt: "ABRA - Koyu Kapı",     bg: "#1a1a1a", fit: "cover"   },
-    { src: "/images/new/1.jpeg",  alt: "ABRA vs Diğerleri",    bg: "#eee",    fit: "contain" },
+    { src: "/images/new/3.jpeg", alt: "ABRA - Koyu Ahşap Kapı", bg: "#c8b89a", fit: "contain" },
+    { src: "/images/new/4.jpeg", alt: "ABRA - Açık Ahşap Kapı", bg: "#c0a87a", fit: "contain" },
+    { src: "/images/new/5.jpeg", alt: "ABRA - Beyaz Kapı",      bg: "#ede8e0", fit: "contain" },
+    { src: "/images/new/6.jpeg", alt: "ABRA - Bej Kapı",        bg: "#e8ddd0", fit: "contain" },
+    { src: "/images/new/7.jpeg", alt: "ABRA - Bej Adaptör",     bg: "#e5ddd2", fit: "contain" },
+    { src: "/images/new/8.jpeg", alt: "ABRA - Siyah Kapı",      bg: "#111",    fit: "contain" },
+    { src: "/images/new/9.jpeg", alt: "ABRA - Gri Kapı",        bg: "#555",    fit: "contain" },
   ];
 
   const benefits = [
