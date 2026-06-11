@@ -128,8 +128,8 @@ export default function FeaturesSection() {
         </div>
       </div>
 
-      {/* ── Feature Image (16:9, tam görünüm) ── */}
-      <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 relative z-10 mb-6">
+      {/* ── Feature Image — tam genişlik, kenar boşluğu yok ── */}
+      <div className="w-full relative z-10 mb-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -137,24 +137,26 @@ export default function FeaturesSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative w-full rounded-3xl overflow-hidden"
+            className="relative w-full overflow-hidden"
             style={{ background: f.bg, aspectRatio: f.ratio }}
           >
-            {/* Görsel — tam, kırpılmadan */}
+            {/* Görsel — padding YOK, tam dolu */}
             <Image
               src={f.image}
               alt={f.title}
               fill
               className="object-contain"
-              sizes="(max-width: 1600px) 100vw, 1600px"
+              sizes="100vw"
               priority
             />
 
-            {/* Alt bilgi kartı */}
-            <div className="absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-8 sm:right-auto sm:max-w-md
-                            bg-black/70 backdrop-blur-xl border border-white/10 rounded-2xl p-5 sm:p-7">
-              <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-2 leading-snug">{f.title}</h3>
-              <p className="text-white/75 text-sm sm:text-base leading-relaxed">{f.desc}</p>
+            {/* Alt gradient — şeffaf, kutu yok */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
+
+            {/* Metin — direkt görselin üzerinde, arka plan yok */}
+            <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-12 max-w-lg">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-snug drop-shadow-lg">{f.title}</h3>
+              <p className="text-white/80 text-sm sm:text-base leading-relaxed drop-shadow">{f.desc}</p>
             </div>
           </motion.div>
         </AnimatePresence>

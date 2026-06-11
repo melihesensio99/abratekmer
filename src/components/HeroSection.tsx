@@ -53,13 +53,13 @@ export default function HeroSection() {
   };
 
   const galleryImages = [
-    { src: "/images/new/3.jpeg", alt: "ABRA - Koyu Ahşap Kapı", bg: "#c8b89a", fit: "contain" },
-    { src: "/images/new/4.jpeg", alt: "ABRA - Açık Ahşap Kapı", bg: "#c0a87a", fit: "contain" },
-    { src: "/images/new/5.jpeg", alt: "ABRA - Beyaz Kapı",      bg: "#ede8e0", fit: "contain" },
-    { src: "/images/new/6.jpeg", alt: "ABRA - Bej Kapı",        bg: "#e8ddd0", fit: "contain" },
-    { src: "/images/new/7.jpeg", alt: "ABRA - Bej Adaptör",     bg: "#e5ddd2", fit: "contain" },
-    { src: "/images/new/8.jpeg", alt: "ABRA - Siyah Kapı",      bg: "#111",    fit: "contain" },
-    { src: "/images/new/9.jpeg", alt: "ABRA - Gri Kapı",        bg: "#555",    fit: "contain" },
+    { src: "/images/new/3.jpeg", alt: "ABRA - Koyu Ahşap Kapı" },
+    { src: "/images/new/4.jpeg", alt: "ABRA - Açık Ahşap Kapı" },
+    { src: "/images/new/5.jpeg", alt: "ABRA - Beyaz Kapı"      },
+    { src: "/images/new/6.jpeg", alt: "ABRA - Bej Kapı"        },
+    { src: "/images/new/7.jpeg", alt: "ABRA - Bej Adaptör"     },
+    { src: "/images/new/8.jpeg", alt: "ABRA - Siyah Kapı"      },
+    { src: "/images/new/9.jpeg", alt: "ABRA - Gri Kapı"        },
   ];
 
   const benefits = [
@@ -80,10 +80,10 @@ export default function HeroSection() {
 
           {/* ── Left: Gallery ── */}
           <div className="flex flex-col gap-4">
-            {/* Main image */}
+            {/* Ana görsel — 3:4 portrait, object-cover ile tam dolu */}
             <div
-              className="relative w-full rounded-3xl overflow-hidden group/gallery border border-black/8 shadow-xl touch-pan-y"
-              style={{ aspectRatio: "1/1", background: galleryImages[currentImage].bg }}
+              className="relative w-full rounded-3xl overflow-hidden group/gallery shadow-xl touch-pan-y"
+              style={{ aspectRatio: "3/4" }}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
@@ -100,7 +100,7 @@ export default function HeroSection() {
                     src={galleryImages[currentImage].src}
                     alt={galleryImages[currentImage].alt}
                     fill
-                    className={galleryImages[currentImage].fit === "cover" ? "object-cover" : "object-contain p-4"}
+                    className="object-cover"
                     priority
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
@@ -144,17 +144,17 @@ export default function HeroSection() {
                 <button
                   key={idx}
                   onClick={() => setCurrentImage(idx)}
-                  style={{ background: img.bg }}
-                  className={`relative flex-shrink-0 w-[72px] h-[72px] rounded-xl border-2 overflow-hidden transition-all duration-300 ${
+                  className={`relative flex-shrink-0 w-[72px] h-[96px] rounded-xl border-2 overflow-hidden transition-all duration-300 ${
                     currentImage === idx
                       ? "border-primary shadow-lg shadow-primary/25 scale-105"
                       : "border-transparent opacity-55 hover:opacity-80"
                   }`}
                 >
-                  <Image src={img.src} alt={img.alt} fill className={img.fit === "cover" ? "object-cover" : "object-contain p-1"} />
+                  <Image src={img.src} alt={img.alt} fill className="object-cover" />
                 </button>
               ))}
             </div>
+
           </div>
 
           {/* ── Right: Info ── */}
