@@ -32,17 +32,17 @@ export default function BannerSection() {
   const showcase1 = [
     {
       id: 2,
-      image: "/images/2.png",
+      image: "/images/new/1.jpeg",
       title: "Hızlı Kilitleme",
     },
     {
       id: 3,
-      image: "/images/3.png",
+      image: "/images/new/2.jpeg",
       title: "Sessiz Mod",
     },
     {
       id: 4,
-      image: "/images/4.png",
+      image: "/images/new/3.jpeg",
       title: "Kolay Kurulum",
     },
   ];
@@ -50,22 +50,22 @@ export default function BannerSection() {
   const showcase2 = [
     {
       id: 6,
-      image: "/images/6.png",
+      image: "/images/new/4.jpeg",
       title: "Parmak İzi",
     },
     {
       id: 7,
-      image: "/images/7.png",
+      image: "/images/new/5.jpeg",
       title: "Şifreli Giriş",
     },
     {
       id: 8,
-      image: "/images/8.png",
+      image: "/images/new/6.jpeg",
       title: "Mobil Uygulama",
     },
     {
       id: 9,
-      image: "/images/9.webp",
+      image: "/images/new/7.jpeg",
       title: "Otomatik Kilit",
     },
   ];
@@ -73,17 +73,17 @@ export default function BannerSection() {
   const showcase3 = [
     {
       id: 10,
-      image: "/images/10.png",
+      image: "/images/new/8.jpeg",
       title: "Adaptör Kiti",
     },
     {
       id: 11,
-      image: "/images/11.png",
+      image: "/images/new/9.jpeg",
       title: "Orijinal Anahtar",
     },
     {
       id: 12,
-      image: "/images/12.png",
+      image: "/images/new/10.jpeg",
       title: "Kiracı Dostu",
     },
   ];
@@ -107,7 +107,7 @@ export default function BannerSection() {
           {/* Using a gray background that matches the screenshot's banner-1.png edges */}
           <div className="relative aspect-[16/8] sm:aspect-[21/9] w-full bg-[#f6f6f6]">
             <Image
-              src="/images/1.png"
+              src="/images/new/11.jpeg"
               alt="Abra Smart Lock PRO"
               fill
               className="object-contain"

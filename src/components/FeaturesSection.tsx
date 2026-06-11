@@ -12,7 +12,7 @@ const features = [
     description: "Kapınızı saniyeler içinde açın. Bluetooth bağlantısı ile yaklaştığınızda otomatik kilit açma.",
     stat: "<1s",
     statLabel: "Kilit Açma Süresi",
-    image: "/images/2.png",
+    image: "/images/new/7.jpeg",
   },
   {
     id: "quiet",
@@ -21,7 +21,7 @@ const features = [
     description: "Gece geç saatlerde eve döndüğünüzde kimseyi rahatsız etmeyin. Otomatik gece modu ile ses kapatılır.",
     stat: "<20dB",
     statLabel: "Gürültü Seviyesi",
-    image: "/images/1.png",
+    image: "/images/new/8.jpeg",
   },
   {
     id: "european",
@@ -30,17 +30,17 @@ const features = [
     description: "Hem kısmi hem de tam kilitleme desteği. Gündüz hızlı çıkış, gece ek güvenlik.",
     stat: "2x",
     statLabel: "Kilitleme Modu",
-    image: "/images/4.png",
+    image: "/images/new/9.jpeg",
   },
 ];
 
 const bannerSlides = [
-  { src: "/images/2.png", alt: "ABRA Smart Lock PRO - Temel Özellikler" },
-  { src: "/images/7.png", alt: "ABRA Smart Lock PRO - Güvenlik" },
-  { src: "/images/8.png", alt: "ABRA Smart Lock PRO - Akıllı Ev" },
-  { src: "/images/10.png", alt: "ABRA Smart Lock PRO - Adaptör Kiti" },
-  { src: "/images/11.png", alt: "ABRA Smart Lock PRO - Orijinal Anahtar" },
-  { src: "/images/12.png", alt: "ABRA Smart Lock PRO - Kiracı Dostu" },
+  { src: "/images/new/10.jpeg", alt: "ABRA Smart Lock PRO - Temel Özellikler" },
+  { src: "/images/new/11.jpeg", alt: "ABRA Smart Lock PRO - Güvenlik" },
+  { src: "/images/new/12.jpeg", alt: "ABRA Smart Lock PRO - Akıllı Ev" },
+  { src: "/images/new/13.jpeg", alt: "ABRA Smart Lock PRO - Adaptör Kiti" },
+  { src: "/images/new/14.jpeg", alt: "ABRA Smart Lock PRO - Orijinal Anahtar" },
+  { src: "/images/new/15.jpeg", alt: "ABRA Smart Lock PRO - Kiracı Dostu" },
 ];
 
 export default function FeaturesSection() {

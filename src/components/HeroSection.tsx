@@ -23,12 +23,12 @@ export default function HeroSection() {
   };
 
   const images = [
-    { src: "/images/anasayfa/haha1.png", alt: "ABRA Smart Lock PRO - Ana Görünüm" },
-    { src: "/images/anasayfa/haha.png", alt: "ABRA Smart Lock PRO - Şık Tasarım" },
-    { src: "/images/anasayfa/hah123a.png", alt: "ABRA Smart Lock PRO - Detaylar" },
-    { src: "/images/anasayfa/hah123123a.png", alt: "ABRA Smart Lock PRO - Teknoloji" },
-    { src: "/images/anasayfa/12312312.png", alt: "ABRA Smart Lock PRO - Kullanım" },
-    { src: "/images/anasayfa/123.png", alt: "ABRA Smart Lock PRO - Güvenlik" },
+    { src: "/images/new/1.jpeg", alt: "ABRA Smart Lock PRO - Ana Görünüm" },
+    { src: "/images/new/2.jpeg", alt: "ABRA Smart Lock PRO - Şık Tasarım" },
+    { src: "/images/new/3.jpeg", alt: "ABRA Smart Lock PRO - Detaylar" },
+    { src: "/images/new/4.jpeg", alt: "ABRA Smart Lock PRO - Teknoloji" },
+    { src: "/images/new/5.jpeg", alt: "ABRA Smart Lock PRO - Kullanım" },
+    { src: "/images/new/6.jpeg", alt: "ABRA Smart Lock PRO - Güvenlik" },
   ];
 
   return (

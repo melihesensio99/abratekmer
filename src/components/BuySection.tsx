@@ -44,10 +44,10 @@ export default function BuySection() {
           <div className="glass rounded-3xl p-8 sm:p-12">
             <div className="grid md:grid-cols-2 gap-10 items-center">
               {/* Product Image */}
-              <div className="relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-surface-light to-surface">
+              <div className="relative aspect-square w-full sm:w-[400px] lg:w-[500px]">
                 <Image
-                  src="/images/1.png"
-                  alt="ABRA Smart Lock PRO"
+                  src="/images/new/16.jpeg"
+                  alt="ABRA Smart Lock PRO Satın Al"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
