@@ -2,37 +2,48 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Görsel ve metnin yan yana temiz durduğu küçük kart bileşeni (mobilde alt alta)
+// Şeffaf, kutusuz kart tasarımı. Görseller direkt şeffaf arka planla yandaki yazıyla hizalanır.
 function FeatureCard({
   src,
   alt,
+  tag,
   title,
   desc,
   points,
 }: {
   src: string;
   alt: string;
+  tag?: string;
   title: string;
   desc?: string;
   points?: string[];
 }) {
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-6 p-6 bg-[#0c0c0c] border border-white/5 rounded-[2rem] transition-all hover:border-white/10">
-      {/* Görsel */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center bg-[#121212] rounded-2xl overflow-hidden p-2" style={{ aspectRatio: "16/10" }}>
-        <img src={src} alt={alt} className="w-full h-full object-contain" />
+    <div className="flex flex-col lg:flex-row items-center gap-8 py-8 transition-all">
+      {/* Görsel - kutusuz, şeffaf */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center">
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-auto object-contain max-h-[300px] select-none pointer-events-none"
+        />
       </div>
       {/* Metin */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center text-left">
-        <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-2 leading-tight">
+        {tag && (
+          <span className="text-primary font-bold text-xs tracking-[0.2em] uppercase mb-2 block">
+            {tag}
+          </span>
+        )}
+        <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 leading-tight" style={{ fontFamily: "var(--font-noto)" }}>
           {title}
         </h3>
-        {desc && <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-4">{desc}</p>}
+        {desc && <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-4">{desc}</p>}
         {points && (
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {points.map((pt, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-white/80 text-sm sm:text-base leading-relaxed">
-                <span className="text-primary mt-1.5 flex-shrink-0 text-[10px]">●</span>
+              <li key={idx} className="flex items-start gap-2.5 text-white/80 text-base sm:text-lg leading-relaxed">
+                <span className="text-primary mt-2 flex-shrink-0 text-[10px]">●</span>
                 <span>{pt}</span>
               </li>
             ))}
@@ -62,7 +73,7 @@ export default function BannerSection() {
 
         {/* 1. Hızlı Kolay Kurulum (Geniş Banner) */}
         <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="relative w-full overflow-hidden rounded-[2rem] flex items-center justify-center bg-[#121212] p-4 border border-white/5">
+          <div className="relative w-full overflow-hidden rounded-[2rem] flex items-center justify-center bg-[#0c0c0c] border border-white/5 p-4">
             <img src="/images/new/14.jpeg" alt="ABRA Smart Lock PRO - Hızlı ve Kolay Kurulum"
               className="w-full h-auto object-contain max-h-[80vh]" />
           </div>
@@ -81,18 +92,19 @@ export default function BannerSection() {
 
         {/* 3. Kurulum Avantajları Görseli (Geniş Banner) */}
         <div className={`transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="relative w-full overflow-hidden rounded-[2rem] flex items-center justify-center bg-[#121212] p-4 border border-white/5">
+          <div className="relative w-full overflow-hidden rounded-[2rem] flex items-center justify-center bg-[#0c0c0c] border border-white/5 p-4">
             <img src="/images/new/15.jpeg" alt="Alet Gerektirmez, Anahtar Değiştirme Yok, Tüm Kapılarla Uyumlu"
               className="w-full h-auto object-contain max-h-[80vh]" />
           </div>
         </div>
 
-        {/* 4. Yan Yana Grid Özellikler (Küçük Başlıklar ve Yanlarında Yazılar) */}
-        <div className="grid md:grid-cols-2 gap-6 pt-6">
+        {/* 4. Yan Yana Grid Özellikler (2. Görseldeki gibi KUTUSUZ ve ŞEFFAF tasarım) */}
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 pt-12">
           {/* Night Mode */}
           <FeatureCard
             src="/images/new/16.jpeg"
             alt="Night Mode"
+            tag="GÜVENLİK MODU"
             title="Quiet Unlocking at Night"
             desc="Gece geç saatlerde eve döndüğünüzde motor sesini minimuma indirin. Ailenizi ve komşularınızı uyandırmadan sessizce kapınızı açın."
           />
@@ -101,7 +113,8 @@ export default function BannerSection() {
           <FeatureCard
             src="/images/new/17.jpeg"
             alt="Daytime vs Nighttime"
-            title="Faster Unlock, Smoother Exit. Safer Home."
+            tag="KİLİT MODLARI"
+            title="Faster Unlock, Smoother Exit."
             points={[
               "Daytime (Gündüz): Yarım kilit moduyla hızlı çıkış.",
               "Nighttime (Gece): Tam kilit moduyla maksimum güvenlik."
@@ -112,7 +125,8 @@ export default function BannerSection() {
           <FeatureCard
             src="/images/new/18.jpeg"
             alt="USB Charging Backup"
-            title="Emergency USB Charging"
+            tag="GÜÇ YÖNETİMİ"
+            title="USB-C Acil Şarj Desteği"
             desc="Pil seviyesi bittiğinde, dışarıdan powerbank ve USB-C yardımıyla acil şarj sağlayarak kapıda kalma riskini tamamen yok edin."
           />
 
@@ -120,13 +134,14 @@ export default function BannerSection() {
           <FeatureCard
             src="/images/new/19.jpeg"
             alt="Sound Alerts"
-            title="Sound Alerts from ABRA Smart"
+            tag="AKILLI UYARILAR"
+            title="Sound Alerts from ABRA"
             desc="Pil gücü kritik seviyeye ulaştığında hem mobil uygulamadan bildirim alın hem de sesli uyarı tonlarıyla durumu takip edin."
           />
         </div>
 
         {/* 5. En Alttaki Tam Genişlikteki Remote Lock Görseli (Büyük Alan) */}
-        <div className={`pt-12 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className={`pt-16 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="relative w-full overflow-hidden rounded-[2rem] flex flex-col items-stretch bg-[#0c0c0c] border border-white/5 p-6 sm:p-10">
             {/* Görsel Üst Başlık Grubu */}
             <div className="mb-8 max-w-2xl">
