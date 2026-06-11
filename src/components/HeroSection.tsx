@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -44,6 +44,19 @@ export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [storeModal, setStoreModal] = useState(false);
+  const thumbnailsContainerRef = useRef<HTMLDivElement>(null);
+  const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    const activeThumbnail = thumbnailRefs.current[currentImage];
+    if (activeThumbnail) {
+      activeThumbnail.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center"
+      });
+    }
+  }, [currentImage]);
 
   const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX);
   const handleTouchEnd = (e: React.TouchEvent) => {
@@ -143,10 +156,11 @@ export default function HeroSection() {
             </div>
 
             {/* Thumbnails */}
-            <div className="hidden sm:flex gap-2.5 overflow-x-auto py-1 hide-scrollbar">
+            <div ref={thumbnailsContainerRef} className="hidden sm:flex gap-2.5 overflow-x-auto py-1 hide-scrollbar">
               {galleryImages.map((img, idx) => (
                 <button
                   key={idx}
+                  ref={(el) => { thumbnailRefs.current[idx] = el; }}
                   onClick={() => setCurrentImage(idx)}
                   className={`relative flex-shrink-0 w-[72px] h-[96px] rounded-xl border-2 overflow-hidden transition-all duration-300 ${
                     currentImage === idx
