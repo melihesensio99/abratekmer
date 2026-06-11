@@ -2,12 +2,20 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const colors = [
   { name: "Siyah", value: "#1a1a1a", trendyolUrl: "https://www.trendyol.com" },
   { name: "Gümüş", value: "#c0c0c0", trendyolUrl: "https://www.trendyol.com" },
   { name: "Altın", value: "#d4a853", trendyolUrl: "https://www.trendyol.com" },
 ];
+
+// Color-matched product images
+const colorImages: Record<string, string> = {
+  "Siyah": "/images/new/8.jpeg",
+  "Gümüş": "/images/new/9.jpeg",
+  "Altın": "/images/new/13.jpeg",
+};
 
 export default function BuySection() {
   const [selectedColor, setSelectedColor] = useState(0);
@@ -26,11 +34,10 @@ export default function BuySection() {
   return (
     <section id="buy" ref={sectionRef} className="py-24 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-      {/* Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className={`text-center mb-16 transition-all duration-700 opacity-100 translate-y-0`}>
+        <div className="text-center mb-16">
           <span className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block">SATIN AL</span>
           <h2 className="heading-section text-white mb-6" style={{ fontFamily: "var(--font-noto)" }}>
             Hemen Sahip Olun
@@ -40,26 +47,32 @@ export default function BuySection() {
           </p>
         </div>
 
-        <div className={`max-w-4xl mx-auto transition-all duration-700 opacity-100 translate-y-0`}>
+        <div className="max-w-5xl mx-auto">
           <div className="glass rounded-3xl p-8 sm:p-12">
             <div className="grid md:grid-cols-2 gap-10 items-center">
-              {/* Product Image */}
-              <div className="relative aspect-square w-full sm:w-[400px] lg:w-[500px]">
+              {/* Product Image - changes with color */}
+              <motion.div
+                key={selectedColor}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className="relative aspect-square w-full rounded-2xl overflow-hidden bg-black/20"
+              >
                 <Image
-                  src="/images/new/16.jpeg"
-                  alt="ABRA Smart Lock PRO Satın Al"
+                  src={colorImages[colors[selectedColor].name]}
+                  alt={`ABRA Smart Lock PRO - ${colors[selectedColor].name}`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-              </div>
+              </motion.div>
 
               {/* Product Info */}
               <div className="space-y-8">
                 <div>
                   <p className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3">ABRA PRODUCT DESIGN</p>
                   <h3 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight" style={{ fontFamily: "var(--font-noto)" }}>
-                    Smart Lock PRO
+                    Smart Lock <span className="text-primary">PRO</span>
                   </h3>
                 </div>
 
@@ -72,13 +85,13 @@ export default function BuySection() {
                       </svg>
                     ))}
                   </div>
-                  <span className="text-white/50 text-sm">4.8 / 5</span>
+                  <span className="text-white/50 text-sm">4.8 / 5 · 500+ değerlendirme</span>
                 </div>
 
                 {/* Color Selection */}
                 <div>
                   <p className="text-white/70 text-sm font-medium mb-3">
-                    Renk: <span className="text-white">{colors[selectedColor].name}</span>
+                    Renk: <span className="text-white font-bold">{colors[selectedColor].name}</span>
                   </p>
                   <div className="flex gap-3">
                     {colors.map((color, index) => (
@@ -95,9 +108,16 @@ export default function BuySection() {
                 </div>
 
                 {/* Key Features */}
-                <div className="space-y-2">
-                  {["Wi-Fi + Bluetooth Bağlantı", "6 Ay Pil Ömrü", "Kolay Kurulum", "Sessiz Mod"].map((feat) => (
-                    <div key={feat} className="flex items-center gap-2 text-sm text-white/60">
+                <div className="space-y-3">
+                  {[
+                    "Wi-Fi + Bluetooth 5.0 Bağlantı",
+                    "6 Aya Varan Pil Ömrü",
+                    "Alet Gerektirmez Kurulum",
+                    "Sessiz Gece Modu",
+                    "Uzaktan Kilit / Açma",
+                    "2 Yıl ABRA Garantisi",
+                  ].map((feat) => (
+                    <div key={feat} className="flex items-center gap-2 text-sm text-white/70">
                       <svg className="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
