@@ -2,6 +2,59 @@
 
 import { useEffect, useRef, useState } from "react";
 
+// Dikey uzatılmış, üst-yan sıfıra sıfır dev görsel barındıran 2x2 grid kart bileşeni
+function ProductFeatureCard({
+  src,
+  alt,
+  tag,
+  title,
+  desc,
+  points,
+}: {
+  src: string;
+  alt: string;
+  tag?: string;
+  title: string;
+  desc?: string;
+  points?: string[];
+}) {
+  return (
+    <div className="flex flex-col bg-[#0c0c0c] border border-white/5 rounded-[2.5rem] overflow-hidden transition-all duration-300 hover:border-white/10 shadow-2xl h-full">
+      {/* Dev Görsel Alanı - Üst ve yanlardan sıfıra sıfır, %70-80 alan kaplar */}
+      <div className="relative w-full h-[380px] sm:h-[480px] bg-[#121212]/30 flex items-center justify-center p-0 overflow-hidden border-b border-white/5">
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover select-none pointer-events-none hover:scale-102 transition-transform duration-700"
+        />
+      </div>
+
+      {/* Metin Alanı - Altta kalan koyu şık alan */}
+      <div className="p-8 sm:p-10 flex flex-col justify-start text-left flex-grow">
+        {tag && (
+          <span className="text-primary font-bold text-xs tracking-[0.2em] uppercase mb-2.5 block">
+            {tag}
+          </span>
+        )}
+        <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-4 leading-tight" style={{ fontFamily: "var(--font-noto)" }}>
+          {title}
+        </h3>
+        {desc && <p className="text-white/60 text-base leading-relaxed">{desc}</p>}
+        {points && (
+          <ul className="space-y-2.5 mt-2">
+            {points.map((pt, idx) => (
+              <li key={idx} className="flex items-start gap-2.5 text-white/80 text-base leading-relaxed">
+                <span className="text-primary mt-2 flex-shrink-0 text-[10px]">●</span>
+                <span>{pt}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function BannerSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -16,113 +69,64 @@ export default function BannerSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-black text-white overflow-hidden">
-      <div className="w-full">
+    <section ref={sectionRef} className="pt-12 pb-24 bg-black overflow-hidden">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
-        {/* ── PANEL 1: Gece Modu (Quiet Unlocking at Night) ── */}
-        <div className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-start p-6 sm:p-16 border-b border-white/5">
-          {/* Devasa Arka Plan Görseli */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (10).jpeg"
-              alt="Quiet Unlocking at Night"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20" />
-          </div>
-
-          {/* Buzlu Cam Metin Paneli */}
-          <div className="relative z-10 max-w-xl p-8 sm:p-10 rounded-[2.5rem] bg-black/40 border border-white/10 backdrop-blur-xl shadow-2xl">
-            <span className="text-primary font-bold text-xs sm:text-sm tracking-[0.2em] uppercase mb-3 block">GÜVENLİK MODU</span>
-            <h3 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4" style={{ fontFamily: "var(--font-noto)" }}>
-              Quiet Unlocking at Night
-            </h3>
-            <p className="text-white/80 text-base sm:text-lg leading-relaxed">
-              Gece geç saatlerde eve döndüğünüzde motor sesini minimuma indirin. Ailenizi ve komşularınızı uyandırmadan sessizce kapınızı açın.
-            </p>
-          </div>
+        {/* Bölüm Başlığı */}
+        <div className={`text-center py-6 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-3 block">NEDEN ABRA?</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5" style={{ fontFamily: "var(--font-noto)" }}>
+            Akıllı Güvenlik, Basit Kurulum
+          </h2>
+          <p className="text-white/55 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+            Mevcut kapınızı ve kilit sisteminizi değiştirmeden evinizi akıllı hale getirin.
+          </p>
         </div>
 
-        {/* ── PANEL 2: Kilit Modları (Faster Unlock, Smoother Exit) ── */}
-        <div className="relative w-full min-h-[90vh] sm:min-h-screen flex items-end justify-center p-6 sm:p-16 border-b border-white/5">
-          {/* Devasa Arka Plan Görseli */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (11).jpeg"
-              alt="Faster Unlock, Smoother Exit"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20" />
-          </div>
+        {/* 2x2 Grid Düzeni - Uzatılmış Dikey Kartlar */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+          {/* Kart 1: Gece Modu */}
+          <ProductFeatureCard
+            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (10).jpeg"
+            alt="Quiet Unlocking at Night"
+            tag="GÜVENLİK MODU"
+            title="Quiet Unlocking at Night"
+            desc="Gece geç saatlerde eve döndüğünüzde motor sesini minimuma indirin. Ailenizi ve komşularınızı uyandırmadan sessizce kapınızı açın."
+          />
 
-          {/* Buzlu Cam Metin Paneli - Alt Ortada konumlu */}
-          <div className="relative z-10 w-full max-w-4xl p-8 sm:p-10 rounded-[2.5rem] bg-black/40 border border-white/10 backdrop-blur-xl shadow-2xl text-center">
-            <span className="text-primary font-bold text-xs sm:text-sm tracking-[0.2em] uppercase mb-3 block">KİLİT MODLARI</span>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-6" style={{ fontFamily: "var(--font-noto)" }}>
-              Faster Unlock, Smoother Exit. Safer Home.
-            </h3>
-            <div className="flex flex-col sm:flex-row justify-center items-start gap-4 sm:gap-12 text-left max-w-2xl mx-auto">
-              <div className="flex items-start gap-2 text-white/80 text-sm sm:text-base">
-                <span className="text-primary mt-1.5 flex-shrink-0 text-[8px]">●</span>
-                <span><strong>Daytime:</strong> Yarım kilit moduyla hızlı çıkış.</span>
-              </div>
-              <div className="flex items-start gap-2 text-white/80 text-sm sm:text-base">
-                <span className="text-primary mt-1.5 flex-shrink-0 text-[8px]">●</span>
-                <span><strong>Nighttime:</strong> Tam kilit moduyla maksimum güvenlik.</span>
-              </div>
-            </div>
-          </div>
-        </div>
+          {/* Kart 2: Kilit Modları */}
+          <ProductFeatureCard
+            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (11).jpeg"
+            alt="Faster Unlock, Smoother Exit"
+            tag="KİLİT MODLARI"
+            title="Faster Unlock, Smoother Exit."
+            points={[
+              "Daytime (Gündüz): Yarım kilit moduyla hızlı çıkış.",
+              "Nighttime (Gece): Tam kilit moduyla maksimum güvenlik."
+            ]}
+          />
 
-        {/* ── PANEL 3: Şarj Desteği (USB-C Acil Şarj Desteği) ── */}
-        <div className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-end p-6 sm:p-16 border-b border-white/5">
-          {/* Devasa Arka Plan Görseli */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (12).jpeg"
-              alt="USB-C Acil Şarj Desteği"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/15" />
-          </div>
+          {/* Kart 3: Şarj Desteği */}
+          <ProductFeatureCard
+            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (12).jpeg"
+            alt="USB-C Acil Şarj Desteği"
+            tag="GÜÇ YÖNETİMİ"
+            title="USB-C Acil Şarj Desteği"
+            desc="Pil seviyesi bittiğinde, dışarıdan powerbank ve USB-C yardımıyla acil şarj sağlayarak kapıda kalma riskini tamamen yok edin."
+          />
 
-          {/* Buzlu Cam Metin Paneli - Sağda konumlu */}
-          <div className="relative z-10 max-w-xl p-8 sm:p-10 rounded-[2.5rem] bg-black/40 border border-white/10 backdrop-blur-xl shadow-2xl">
-            <span className="text-primary font-bold text-xs sm:text-sm tracking-[0.2em] uppercase mb-3 block">GÜÇ YÖNETİMİ</span>
-            <h3 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4" style={{ fontFamily: "var(--font-noto)" }}>
-              USB-C Acil Şarj Desteği
-            </h3>
-            <p className="text-white/80 text-base sm:text-lg leading-relaxed">
-              Pil seviyesi tükendiğinde, dışarıdan powerbank ve USB-C yardımıyla acil şarj sağlayarak kapıda kalma riskini tamamen ortadan kaldırın.
-            </p>
-          </div>
-        </div>
-
-        {/* ── PANEL 4: Sesli Alarmlar (Sound Alerts from ABRA) ── */}
-        <div className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-start p-6 sm:p-16">
-          {/* Devasa Arka Plan Görseli */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (13).jpeg"
-              alt="Sound Alerts from ABRA"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20" />
-          </div>
-
-          {/* Buzlu Cam Metin Paneli - Solda konumlu */}
-          <div className="relative z-10 max-w-xl p-8 sm:p-10 rounded-[2.5rem] bg-black/40 border border-white/10 backdrop-blur-xl shadow-2xl">
-            <span className="text-primary font-bold text-xs sm:text-sm tracking-[0.2em] uppercase mb-3 block">AKILLI UYARILAR</span>
-            <h3 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4" style={{ fontFamily: "var(--font-noto)" }}>
-              Sound Alerts from ABRA
-            </h3>
-            <p className="text-white/80 text-base sm:text-lg leading-relaxed">
-              Pil gücü kritik seviyeye yaklaştığında veya olağandışı durumlarda hem uygulamadan bildirimler alın hem de sesli uyarı tonlarıyla güvende kalın.
-            </p>
-          </div>
+          {/* Kart 4: Sesli Alarmlar */}
+          <ProductFeatureCard
+            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (13).jpeg"
+            alt="Sound Alerts from ABRA"
+            tag="AKILLI UYARILAR"
+            title="Sound Alerts from ABRA"
+            desc="Pil gücü kritik seviyeye ulaştığında hem mobil uygulamadan bildirim alın hem de sesli uyarı tonlarıyla durumu takip edin."
+          />
         </div>
 
       </div>
     </section>
   );
 }
+// Fresh build trigger comment to ensure Vercel completes deploy pipeline for 2x2 grid.
