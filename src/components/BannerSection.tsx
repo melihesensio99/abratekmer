@@ -71,14 +71,6 @@ export default function BannerSection() {
     <section ref={sectionRef} className="pt-8 pb-24 bg-black overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
-        {/* 1. Hızlı Kolay Kurulum (Geniş Banner) */}
-        <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="relative w-full overflow-hidden rounded-[2rem] flex items-center justify-center bg-[#0c0c0c] border border-white/5 p-4">
-            <img src="/images/new/14.jpeg" alt="ABRA Smart Lock PRO - Hızlı ve Kolay Kurulum"
-              className="w-full h-auto object-contain max-h-[80vh]" />
-          </div>
-        </div>
-
         {/* 2. Bölüm Başlığı */}
         <div className={`text-center py-6 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-3 block">NEDEN ABRA?</span>
@@ -88,14 +80,6 @@ export default function BannerSection() {
           <p className="text-white/55 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
             Mevcut kapınızı ve kilit sisteminizi değiştirmeden evinizi akıllı hale getirin.
           </p>
-        </div>
-
-        {/* 3. Kurulum Avantajları Görseli (Geniş Banner) */}
-        <div className={`transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="relative w-full overflow-hidden rounded-[2rem] flex items-center justify-center bg-[#0c0c0c] border border-white/5 p-4">
-            <img src="/images/new/15.jpeg" alt="Alet Gerektirmez, Anahtar Değiştirme Yok, Tüm Kapılarla Uyumlu"
-              className="w-full h-auto object-contain max-h-[80vh]" />
-          </div>
         </div>
 
         {/* 4. Yan Yana Grid Özellikler (2. Görseldeki gibi KUTUSUZ ve ŞEFFAF tasarım) */}
@@ -157,7 +141,7 @@ export default function BannerSection() {
             {/* Genişletilmiş Tam Boyut Görsel */}
             <div className="w-full relative rounded-2xl overflow-hidden bg-[#121212] p-2 flex items-center justify-center">
               <img
-                src="/images/new/2.jpeg"
+                src="/images/new/remote_unlock.jpeg"
                 alt="Remote Lock / Unlock - ABRA App"
                 className="w-full h-auto object-contain max-h-[85vh]"
               />

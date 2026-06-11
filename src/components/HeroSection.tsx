@@ -53,13 +53,17 @@ export default function HeroSection() {
   };
 
   const galleryImages = [
-    { src: "/images/new/3.jpeg", alt: "ABRA - Koyu Ahşap Kapı" },
-    { src: "/images/new/4.jpeg", alt: "ABRA - Açık Ahşap Kapı" },
-    { src: "/images/new/5.jpeg", alt: "ABRA - Beyaz Kapı"      },
-    { src: "/images/new/6.jpeg", alt: "ABRA - Bej Kapı"        },
-    { src: "/images/new/7.jpeg", alt: "ABRA - Bej Adaptör"     },
-    { src: "/images/new/8.jpeg", alt: "ABRA - Siyah Kapı"      },
-    { src: "/images/new/9.jpeg", alt: "ABRA - Gri Kapı"        },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34.jpeg", alt: "ABRA Akıllı Kilit 1" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (1).jpeg", alt: "ABRA Akıllı Kilit 2" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (2).jpeg", alt: "ABRA Akıllı Kilit 3" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (3).jpeg", alt: "ABRA Akıllı Kilit 4" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (4).jpeg", alt: "ABRA Akıllı Kilit 5" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (5).jpeg", alt: "ABRA Akıllı Kilit 6" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (6).jpeg", alt: "ABRA Akıllı Kilit 7" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (7).jpeg", alt: "ABRA Akıllı Kilit 8" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.33 (2).jpeg", alt: "ABRA Akıllı Kilit 9" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.33 (3).jpeg", alt: "ABRA Akıllı Kilit 10" },
+    { src: "/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.33 (4).jpeg", alt: "ABRA Akıllı Kilit 11" },
   ];
 
   const benefits = [
