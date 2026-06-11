@@ -2,48 +2,6 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-
-// Görsellerden doğrudan alınan başlıklar ve içerikler
-const features = [
-  {
-    id: "remote",
-    tab: "Uzaktan Açma / Kilitleme",
-    title: "Remote Lock / Unlock",
-    desc: "Şarj bitmeye yakın durumda Wi-Fi otomatik açılıp yöneticiye bilgi verir. Kapı cihazı çalışmadan açıldığında Wi-Fi otomatik açılır. Akıllı telefonu olmayan misafir için kapıya tıklandığında Wi-Fi açılır ve uzaktan kapı açılabilir.",
-    image: "/images/new/2.jpeg",
-    // 2.jpeg is dark/black bg landscape
-    bg: "#0d0d0d",
-    ratio: "16/9" as const,
-  },
-  {
-    id: "night",
-    tab: "Gece Modu",
-    title: "Gece Sessiz Açılma",
-    desc: "Gece geç saatlerde eve dönerken kapınızı tamamen sessiz açın. Motor sesi minimuma iner — kimseyi uyandırmadan güvenle girin.",
-    image: "/images/new/16.jpeg",
-    bg: "#d8d4ce",
-    ratio: "16/9" as const,
-  },
-  {
-    id: "daynight",
-    tab: "Gündüz / Gece Kilitleme",
-    title: "Daha Hızlı Çıkış. Daha Güvenli Ev.",
-    desc: "Gündüz: Yarım engajman ile hızlı ve akıcı çıkış. Gece: Tam engajman ile maksimum güvenlik. İki mod arasında otomatik geçiş.",
-    image: "/images/new/17.jpeg",
-    bg: "#f0f0f0",
-    ratio: "16/9" as const,
-  },
-  {
-    id: "install",
-    tab: "Kolay Kurulum",
-    title: "Hızlı, Kolay ve Uyumlu Kurulum",
-    desc: "Kurulum için hiçbir alet gerekmez. Mevcut anahtarınızı değiştirmenize gerek yok. Tüm kapı ve kilit tipleriyle uyumludur.",
-    image: "/images/new/15.jpeg",
-    bg: "#f0f0f0",
-    ratio: "16/9" as const,
-  },
-];
 
 // Portrait installation images (3:4 ratio) with exact bg colors
 const compatibilitySlides = [
@@ -61,7 +19,6 @@ const compatibilitySlides = [
 ];
 
 export default function FeaturesSection() {
-  const [activeTab, setActiveTab] = useState(0);
   const [bannerIndex, setBannerIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartX, setDragStartX] = useState(0);
@@ -89,81 +46,13 @@ export default function FeaturesSection() {
     setDragOffset(0);
   };
 
-  const f = features[activeTab];
-
   return (
-    <section id="features" className="relative pt-24 pb-16 bg-background overflow-hidden">
+    <section id="features" className="relative pt-16 pb-16 bg-background overflow-hidden border-t border-white/5">
       <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full translate-y-1/2 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-        {/* ── Başlık ── */}
-        <div className="text-center mb-14">
-          <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-3 block">ÖZELLİKLER</span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5"
-            style={{ fontFamily: "var(--font-noto)" }}>
-            Neden ABRA Smart Lock PRO?
-          </h2>
-          <p className="text-white/55 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
-            Gelişmiş teknoloji ile evinizin güvenliğini bir üst seviyeye taşıyın
-          </p>
-        </div>
-
-        {/* ── Tabs ── */}
-        <div className="flex justify-center gap-2 sm:gap-3 mb-10 flex-wrap">
-          {features.map((feat, i) => (
-            <button
-              key={feat.id}
-              onClick={() => setActiveTab(i)}
-              className={`px-5 sm:px-7 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border ${
-                activeTab === i
-                  ? "bg-primary border-primary text-white shadow-lg shadow-primary/40"
-                  : "bg-white/5 border-white/15 text-white/60 hover:border-white/35 hover:text-white"
-              }`}
-            >
-              {feat.tab}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Feature Image — tam genişlik, kenar boşluğu yok ── */}
-      <div className="w-full relative z-10 mb-6">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative w-full overflow-hidden"
-            style={{ background: f.bg, aspectRatio: f.ratio }}
-          >
-            {/* Görsel — padding YOK, tam dolu */}
-            <Image
-              src={f.image}
-              alt={f.title}
-              fill
-              className="object-contain"
-              sizes="100vw"
-              priority
-            />
-
-            {/* Alt gradient — şeffaf, kutu yok */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
-
-            {/* Metin — direkt görselin üzerinde, arka plan yok */}
-            <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-12 max-w-lg">
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-snug drop-shadow-lg">{f.title}</h3>
-              <p className="text-white/80 text-sm sm:text-base leading-relaxed drop-shadow">{f.desc}</p>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
       {/* ── Uyumluluk Başlık ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-20 mb-10 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-10 text-center">
         <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-3 block">UYUMLULUK</span>
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5"
           style={{ fontFamily: "var(--font-noto)" }}>

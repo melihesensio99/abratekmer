@@ -105,15 +105,15 @@ export default function BannerSection() {
         <div className={`grid md:grid-cols-2 gap-6 transition-all duration-700 delay-[400ms] ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <PromoCard
             src="/images/new/16.jpeg" bg="#d8d4ce"
-            alt="Sessiz Gece Açılması"
-            label="Night Mode" title="Sessiz Gece Açılması"
+            alt="NIGHT Mode - Quiet Unlocking at Night"
+            label="NIGHT Mode" title="Quiet Unlocking at Night"
             desc="Gece geç dönerken aileni uyandırma" sizes="50vw"
           />
           <PromoCard
             src="/images/new/17.jpeg" bg="#f0f0f0"
-            alt="Gündüz Gece Kilitleme Karşılaştırması"
-            label="Dual Mode" title="Gündüz & Gece Modu"
-            desc="Gündüz hızlı çıkış, gece tam güvenlik" side="right" sizes="50vw"
+            alt="Daytime Half Engaged vs Nighttime Fully Engaged"
+            label="Daytime vs Nighttime" title="Faster Unlock, Smoother Exit."
+            desc="Daytime: Half Engaged • Nighttime: Fully Engaged" side="right" sizes="50vw"
           />
         </div>
 
@@ -121,15 +121,15 @@ export default function BannerSection() {
         <div className={`grid md:grid-cols-2 gap-6 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <PromoCard
             src="/images/new/18.jpeg" bg="#1a1a1a"
-            alt="6 Aya Varan Pil Ömrü ve USB Şarj"
-            label="Güç Yönetimi" title="6 Aya Varan Pil Ömrü"
-            desc="USB-C ile acil şarj, mahsur kalma yok" sizes="50vw"
+            alt="Emergency USB Charging - Battery Backup"
+            label="Emergency Charging" title="USB Charging Backup"
+            desc="Pil bittiğinde USB ile acil şarz, mahsur kalma yok" sizes="50vw"
           />
           <PromoCard
             src="/images/new/19.jpeg" bg="#f0f0f0"
-            alt="Sesli Uyarılar ve Pil Bildirimler"
-            label="Akıllı Uyarılar" title="Sesli & App Bildirimleri"
-            desc="Pil bitmeden önce sesli ve uygulama uyarısı" side="right" sizes="50vw"
+            alt="Sound Alerts from ABRA Smart"
+            label="Sound Alerts" title="Sound Alerts from ABRA Smart"
+            desc="Battery about to deplete — app bildirimi + sesli uyarı" side="right" sizes="50vw"
           />
         </div>
 
@@ -137,9 +137,9 @@ export default function BannerSection() {
         <div className={`transition-all duration-700 delay-[600ms] ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <PromoCard
             src="/images/new/2.jpeg" bg="#0d0d0d"
-            alt="Uzaktan Kilit Açma ve Kapama - ABRA App"
-            label="Remote Access" title="Uzaktan Kilit Aç / Kapat"
-            desc={`Wi-Fi ile her yerden kontrol\nMisafir erişimini uzaktan yönet\nKapı açıldığında otomatik bildirim`}
+            alt="Remote Lock / Unlock - ABRA App"
+            label="Remote Access" title="Remote Lock / Unlock"
+            desc="Wi-Fi ile her yerden kontrol • Misafir erişimi uzaktan yönet • Kapı açıldığında otomatik bildirim"
           />
         </div>
 
