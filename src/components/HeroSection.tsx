@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const stores = [
   {
@@ -276,7 +276,7 @@ export default function HeroSection() {
       {/* ── Store Modal ── */}
       <AnimatePresence>
         {storeModal && (
-          <m.div
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -287,7 +287,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
 
             {/* Card */}
-            <m.div
+            <motion.div
               initial={{ opacity: 0, scale: 0.92, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
@@ -327,8 +327,8 @@ export default function HeroSection() {
               </div>
 
               <p className="text-center text-black/30 text-xs mt-6">Güvenli ödeme • Hızlı kargo • Kolay iade</p>
-            </m.div>
-          </m.div>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </section>
