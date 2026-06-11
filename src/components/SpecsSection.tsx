@@ -102,17 +102,6 @@ export default function SpecsSection() {
             </motion.div>
           </div>
         </div>
- 
-        {/* Comparison Image - Full Width */}
-        <div className="relative rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a]">
-          <div className="relative w-full flex items-center justify-center">
-            <img
-              src="/images/new/specs_intro.jpeg"
-              alt="ABRA Smart Lock PRO vs Rakip Ürünler Karşılaştırması"
-              className="w-full h-auto object-contain max-h-[80vh]"
-            />
-          </div>
-        </div>
       </div>
     </section>
   );
