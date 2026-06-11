@@ -9,33 +9,36 @@ const stores = [
     name: "Trendyol",
     url: "https://www.trendyol.com",
     color: "#f27a1a",
+    description: "Yetkili ABRA Resmi Satıcı Mağazası",
+    badge: "Popüler",
     logo: (
-      <svg viewBox="0 0 120 40" className="h-7 w-auto" fill="none">
-        <rect width="120" height="40" rx="6" fill="#f27a1a"/>
-        <text x="60" y="27" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16" fontFamily="Arial">Trendyol</text>
-      </svg>
+      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#f27a1a]/10 group-hover:bg-[#f27a1a]/20 transition-colors">
+        <span className="text-xl font-black text-[#f27a1a]">ty</span>
+      </div>
     ),
   },
   {
     name: "Amazon",
     url: "https://www.amazon.com.tr",
     color: "#ff9900",
+    description: "Hızlı Gönderim & Amazon Güvencesi",
+    badge: "Tavsiye Edilen",
     logo: (
-      <svg viewBox="0 0 120 40" className="h-7 w-auto" fill="none">
-        <rect width="120" height="40" rx="6" fill="#232f3e"/>
-        <text x="60" y="27" textAnchor="middle" fill="#ff9900" fontWeight="bold" fontSize="16" fontFamily="Arial">amazon</text>
-      </svg>
+      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#232f3e]/10 group-hover:bg-[#232f3e]/20 transition-colors">
+        <span className="text-base font-extrabold text-[#232f3e] tracking-tighter">a</span>
+      </div>
     ),
   },
   {
     name: "Hepsiburada",
     url: "https://www.hepsiburada.com",
     color: "#ff6000",
+    description: "Kolay İade & Taksit Seçenekleri",
+    badge: "Hızlı Teslimat",
     logo: (
-      <svg viewBox="0 0 120 40" className="h-7 w-auto" fill="none">
-        <rect width="120" height="40" rx="6" fill="#ff6000"/>
-        <text x="60" y="27" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13" fontFamily="Arial">Hepsiburada</text>
-      </svg>
+      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#ff6000]/10 group-hover:bg-[#ff6000]/20 transition-colors">
+        <span className="text-lg font-black text-[#ff6000]">hb</span>
+      </div>
     ),
   },
 ];
@@ -310,41 +313,87 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ type: "spring", stiffness: 340, damping: 28 }}
-              className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 z-10"
+              className="relative bg-white border border-gray-100 rounded-[2.5rem] shadow-2xl w-full max-w-md p-8 sm:p-10 z-10 text-center overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Decorative background glow */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
+
               {/* Close */}
               <button onClick={() => setStoreModal(false)}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center transition-colors">
-                <svg className="w-5 h-5 text-black/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                <svg className="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
 
-              <h3 className="text-2xl font-extrabold text-black mb-1" style={{ fontFamily: "var(--font-noto)" }}>Nereden Satın Almak İstersiniz?</h3>
-              <p className="text-black/50 text-sm mb-7">Güvendiğiniz platformdan kolayca sipariş verin</p>
+              <span className="text-primary font-extrabold text-xs tracking-widest uppercase mb-2 block">ABRA SMART LOCK PRO</span>
+              <h3 className="text-2xl sm:text-3xl font-black text-black mb-2" style={{ fontFamily: "var(--font-noto)" }}>Nereden Satın Almak İstersiniz?</h3>
+              <p className="text-gray-500 text-sm mb-8">Güvendiğiniz platformdan kolayca sipariş verin</p>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {stores.map((store) => (
                   <a
                     key={store.name}
                     href={store.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between w-full px-5 py-4 rounded-2xl border-2 border-black/8 hover:border-primary/40 hover:bg-primary/[0.03] transition-all group"
+                    className="flex items-center justify-between w-full p-4 rounded-2xl bg-gray-50/80 border border-gray-100 hover:border-primary/20 hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 group relative overflow-hidden"
+                    style={{
+                      ["--hover-glow" as any]: `${store.color}15`
+                    }}
                   >
-                    <div className="flex items-center gap-3">
+                    {/* Brand glow overlay on hover */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" 
+                      style={{
+                        background: `radial-gradient(circle at 20px 50%, ${store.color}08, transparent 60%)`
+                      }}
+                    />
+
+                    <div className="flex items-center gap-4 relative z-10">
                       {store.logo}
-                      <span className="font-bold text-black text-base">{store.name}</span>
+                      <div className="text-left">
+                        <div className="flex items-center gap-2">
+                          <span className="font-extrabold text-gray-900 text-base">{store.name}</span>
+                          {store.badge && (
+                            <span 
+                              className="text-[9px] font-bold px-1.5 py-0.5 rounded-md"
+                              style={{ 
+                                backgroundColor: `${store.color}10`,
+                                color: store.color 
+                              }}
+                            >
+                              {store.badge}
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-xs text-gray-500 font-medium block mt-0.5">{store.description}</span>
+                      </div>
                     </div>
-                    <svg className="w-5 h-5 text-black/30 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
+
+                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 group-hover:border-primary/25 transition-colors relative z-10">
+                      <svg className="w-4 h-4 text-gray-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </a>
                 ))}
               </div>
 
-              <p className="text-center text-black/30 text-xs mt-6">Güvenli ödeme • Hızlı kargo • Kolay iade</p>
+              {/* Trust Badges */}
+              <div className="mt-8 pt-6 border-t border-gray-100 grid grid-cols-3 gap-2">
+                {[
+                  { icon: "🛡️", text: "Güvenli Ödeme" },
+                  { icon: "🚚", text: "Hızlı Kargo" },
+                  { icon: "🔄", text: "Kolay İade" }
+                ].map((badge, idx) => (
+                  <div key={idx} className="flex flex-col items-center gap-1">
+                    <span className="text-lg">{badge.icon}</span>
+                    <span className="text-[10px] font-bold text-gray-600 tracking-tight">{badge.text}</span>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         )}

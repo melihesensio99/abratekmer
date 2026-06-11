@@ -10,6 +10,7 @@ function ProductFeatureCard({
   title,
   desc,
   points,
+  containImage = false,
 }: {
   src: string;
   alt: string;
@@ -17,33 +18,36 @@ function ProductFeatureCard({
   title: string;
   desc?: string;
   points?: string[];
+  containImage?: boolean;
 }) {
   return (
-    <div className="flex flex-col bg-[#0c0c0c] border border-white/5 rounded-[2.5rem] overflow-hidden transition-all duration-300 hover:border-white/10 shadow-2xl h-full">
+    <div className="group flex flex-col bg-[#0c0c0c] border border-white/5 rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:border-white/15 hover:shadow-3xl hover:shadow-primary/5 h-full">
       {/* Dev Görsel Alanı - Üst ve yanlardan sıfıra sıfır, %70-80 alan kaplar */}
-      <div className="relative w-full h-[380px] sm:h-[480px] bg-[#121212]/30 flex items-center justify-center p-0 overflow-hidden border-b border-white/5">
+      <div className="relative w-full h-[380px] sm:h-[480px] bg-[#0d0d0d] flex items-center justify-center p-0 overflow-hidden border-b border-white/5">
         <img
           src={src}
           alt={alt}
-          className="w-full h-full object-cover select-none pointer-events-none hover:scale-102 transition-transform duration-700"
+          className={`w-full h-full select-none pointer-events-none transition-transform duration-700 ease-out group-hover:scale-105 ${
+            containImage ? "object-contain px-2 py-4" : "object-cover"
+          }`}
         />
       </div>
 
       {/* Metin Alanı - Altta kalan koyu şık alan */}
       <div className="p-8 sm:p-10 flex flex-col justify-start text-left flex-grow">
         {tag && (
-          <span className="text-primary font-bold text-xs tracking-[0.2em] uppercase mb-2.5 block">
+          <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-3 block">
             {tag}
           </span>
         )}
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-4 leading-tight" style={{ fontFamily: "var(--font-noto)" }}>
+        <h3 className="text-2xl sm:text-3xl font-black text-white mb-4 leading-tight tracking-tight" style={{ fontFamily: "var(--font-noto)" }}>
           {title}
         </h3>
-        {desc && <p className="text-white/60 text-base leading-relaxed">{desc}</p>}
+        {desc && <p className="text-white/70 text-base sm:text-lg leading-relaxed font-medium">{desc}</p>}
         {points && (
-          <ul className="space-y-2.5 mt-2">
+          <ul className="space-y-3 mt-2">
             {points.map((pt, idx) => (
-              <li key={idx} className="flex items-start gap-2.5 text-white/80 text-base leading-relaxed">
+              <li key={idx} className="flex items-start gap-2.5 text-white/80 text-base sm:text-lg leading-relaxed font-medium">
                 <span className="text-primary mt-2 flex-shrink-0 text-[10px]">●</span>
                 <span>{pt}</span>
               </li>
@@ -92,6 +96,7 @@ export default function BannerSection() {
             tag="GÜVENLİK MODU"
             title="Quiet Unlocking at Night"
             desc="Gece geç saatlerde eve döndüğünüzde motor sesini minimuma indirin. Ailenizi ve komşularınızı uyandırmadan sessizce kapınızı açın."
+            containImage={true}
           />
 
           {/* Kart 2: Kilit Modları */}
