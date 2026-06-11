@@ -74,16 +74,16 @@ export default function SpecsSection() {
             >
               <div className="relative aspect-video w-full">
                 <Image
-                  src="/images/new/14.jpeg"
+                  src="/images/new/specs_intro.jpeg"
                   alt="ABRA Smart Lock PRO - Ürün Tanıtımı"
                   fill
-                  className="object-cover"
+                  className="object-contain bg-[#0a0a0a]"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
               </div>
             </motion.div>
-
+ 
             {/* Charging image */}
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -92,37 +92,25 @@ export default function SpecsSection() {
             >
               <div className="relative aspect-video w-full">
                 <Image
-                  src="/images/new/18.jpeg"
+                  src="/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (12).jpeg"
                   alt="ABRA - USB-C Şarj ve Pil Yedekleme"
                   fill
-                  className="object-cover"
+                  className="object-contain bg-[#0a0a0a]"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6">
-                  <span className="text-primary text-xs font-bold tracking-widest uppercase block mb-1">Güç Yönetimi</span>
-                  <p className="text-white font-bold text-lg">USB-C Acil Şarj Desteği</p>
-                  <p className="text-white/70 text-sm">Pil bitmeden önce sesli ve uygulama bildirimi</p>
-                </div>
               </div>
             </motion.div>
           </div>
         </div>
-
+ 
         {/* Comparison Image - Full Width */}
-        <div className="relative rounded-[2rem] overflow-hidden">
-          <div className="relative aspect-[16/6] w-full bg-[#f0f0f0]">
-            <Image
-              src="/images/new/1.jpeg"
+        <div className="relative rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a]">
+          <div className="relative w-full flex items-center justify-center">
+            <img
+              src="/images/new/specs_intro.jpeg"
               alt="ABRA Smart Lock PRO vs Rakip Ürünler Karşılaştırması"
-              fill
-              className="object-cover"
+              className="w-full h-auto object-contain max-h-[80vh]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
-              <p className="text-white/70 text-sm font-bold tracking-widest uppercase">Diğerleriyle Karşılaştırın</p>
-              <h3 className="text-white text-2xl sm:text-4xl font-extrabold mt-2">ABRA vs. Diğerleri</h3>
-            </div>
           </div>
         </div>
       </div>
