@@ -89,7 +89,7 @@ export default function BannerSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
           {/* 1. Quiet Unlocking at Night - Dikey Büyük Kart (md:col-span-1) */}
           <BentoCard
-            src="/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (10).jpeg"
+            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (10).jpeg"
             alt="Night Mode"
             tag="GÜVENLİK MODU"
             title="Quiet Unlocking at Night"
@@ -99,7 +99,7 @@ export default function BannerSection() {
 
           {/* 2. Daytime vs Nighttime - Geniş Yatay Kart (md:col-span-2) */}
           <BentoCard
-            src="/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (11).jpeg"
+            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (11).jpeg"
             alt="Daytime vs Nighttime"
             tag="KİLİT MODLARI"
             title="Faster Unlock, Smoother Exit."
@@ -112,7 +112,7 @@ export default function BannerSection() {
 
           {/* 3. Emergency Charging - Geniş Yatay Kart (md:col-span-2) */}
           <BentoCard
-            src="/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (12).jpeg"
+            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (12).jpeg"
             alt="USB Charging Backup"
             tag="GÜÇ YÖNETİMİ"
             title="USB-C Acil Şarj Desteği"
@@ -122,7 +122,7 @@ export default function BannerSection() {
 
           {/* 4. Sound Alerts - Dikey Kart (md:col-span-1) */}
           <BentoCard
-            src="/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (13).jpeg"
+            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (13).jpeg"
             alt="Sound Alerts"
             tag="AKILLI UYARILAR"
             title="Sound Alerts from ABRA"

@@ -92,7 +92,7 @@ export default function SpecsSection() {
             >
               <div className="relative aspect-video w-full">
                 <Image
-                  src="/images/new/bas/WhatsApp Image 2026-06-04 at 10.58.34 (12).jpeg"
+                  src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (12).jpeg"
                   alt="ABRA - USB-C Şarj ve Pil Yedekleme"
                   fill
                   className="object-contain bg-[#0a0a0a]"
