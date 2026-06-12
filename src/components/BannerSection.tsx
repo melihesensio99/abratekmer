@@ -163,53 +163,40 @@ export default function BannerSection() {
               alt="Faster Unlock, Smoother Exit"
               className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]"
             />
-            {/* Dark gradient overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+            {/* Subtle bottom gradient only — keeps image visible */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
           </div>
 
-          {/* Content overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12 lg:p-16">
-            <div className="max-w-2xl">
-              <span
-                className="inline-flex items-center gap-2 text-primary font-bold text-[11px] tracking-[0.3em] uppercase mb-4"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? "translateY(0)" : "translateY(20px)",
-                  transition: "all 0.7s ease 0.5s",
-                }}
-              >
-                <span className="w-6 h-[2px] bg-primary rounded-full" />
+          {/* Compact glass panel — bottom left, doesn't cover the image */}
+          <div
+            className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 max-w-md"
+            style={{
+              opacity: heroVisible ? 1 : 0,
+              transform: heroVisible ? "translateY(0)" : "translateY(20px)",
+              transition: "all 0.8s ease 0.5s",
+            }}
+          >
+            <div className="bg-black/50 backdrop-blur-xl border border-white/10 rounded-2xl p-5 sm:p-6">
+              <span className="inline-flex items-center gap-2 text-primary font-bold text-[10px] tracking-[0.3em] uppercase mb-3">
+                <span className="w-5 h-[2px] bg-primary rounded-full" />
                 KİLİT MODLARI
               </span>
 
               <h3
-                className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-[1.1] tracking-tight"
-                style={{
-                  fontFamily: "var(--font-noto)",
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? "translateY(0)" : "translateY(24px)",
-                  transition: "all 0.8s ease 0.6s",
-                }}
+                className="text-xl sm:text-2xl font-black text-white mb-3 leading-[1.15] tracking-tight"
+                style={{ fontFamily: "var(--font-noto)" }}
               >
                 Faster Unlock, Smoother Exit.
               </h3>
 
-              <ul
-                className="space-y-3 max-w-xl"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? "translateY(0)" : "translateY(20px)",
-                  transition: "all 0.8s ease 0.75s",
-                }}
-              >
-                <li className="flex items-start gap-3 text-white/70 text-base sm:text-lg leading-relaxed font-medium">
-                  <span className="w-5 h-5 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-1"><span className="w-1.5 h-1.5 rounded-full bg-primary" /></span>
-                  Daytime (Gündüz): Yarım kilit moduyla hızlı çıkış.
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-white/75 text-sm leading-relaxed font-medium">
+                  <span className="w-4 h-4 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5"><span className="w-1 h-1 rounded-full bg-primary" /></span>
+                  Daytime: Yarım kilit moduyla hızlı çıkış.
                 </li>
-                <li className="flex items-start gap-3 text-white/70 text-base sm:text-lg leading-relaxed font-medium">
-                  <span className="w-5 h-5 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-1"><span className="w-1.5 h-1.5 rounded-full bg-primary" /></span>
-                  Nighttime (Gece): Tam kilit moduyla maksimum güvenlik.
+                <li className="flex items-start gap-2 text-white/75 text-sm leading-relaxed font-medium">
+                  <span className="w-4 h-4 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5"><span className="w-1 h-1 rounded-full bg-primary" /></span>
+                  Nighttime: Tam kilit moduyla maksimum güvenlik.
                 </li>
               </ul>
             </div>
@@ -232,7 +219,7 @@ export default function BannerSection() {
           }}
         >
           {/* Tab buttons + arrows — ABOVE the slider */}
-          <div className="flex items-center justify-between mb-6 px-1">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 px-1">
             <div className="flex items-center gap-2 sm:gap-3">
               {features.map((feature, idx) => (
                 <button
@@ -245,18 +232,6 @@ export default function BannerSection() {
                   }`}
                 >
                   {feature.tag}
-                  {/* Active progress underline */}
-                  {activeSlide === idx && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-[2px] rounded-full overflow-hidden">
-                      <span
-                        className="block h-full bg-white/40 rounded-full"
-                        style={{
-                          width: "100%",
-                          animation: "progress-fill 5s linear",
-                        }}
-                      />
-                    </span>
-                  )}
                 </button>
               ))}
             </div>
