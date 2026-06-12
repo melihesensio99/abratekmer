@@ -224,13 +224,66 @@ export default function BannerSection() {
 
         {/* ═══ SLIDER — 3 feature cards with swipe ═══ */}
         <div
-          className="relative"
+          className="relative mt-6"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? "translateY(0)" : "translateY(40px)",
             transition: "all 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s",
           }}
         >
+          {/* Tab buttons + arrows — ABOVE the slider */}
+          <div className="flex items-center justify-between mb-6 px-1">
+            <div className="flex items-center gap-2 sm:gap-3">
+              {features.map((feature, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToSlide(idx)}
+                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 ${
+                    activeSlide === idx
+                      ? "bg-primary text-white shadow-lg shadow-primary/25"
+                      : "bg-white/[0.06] text-white/45 border border-white/[0.08] hover:bg-white/[0.1] hover:text-white/70"
+                  }`}
+                >
+                  {feature.tag}
+                  {/* Active progress underline */}
+                  {activeSlide === idx && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-[2px] rounded-full overflow-hidden">
+                      <span
+                        className="block h-full bg-white/40 rounded-full"
+                        style={{
+                          width: "100%",
+                          animation: "progress-fill 5s linear",
+                        }}
+                      />
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Arrow navigation */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prevSlide}
+                className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 hover:border-white/15 transition-all group/arrow"
+                aria-label="Önceki"
+              >
+                <svg className="w-4 h-4 text-white/50 group-hover/arrow:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={nextSlide}
+                className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 hover:border-white/15 transition-all group/arrow"
+                aria-label="Sonraki"
+              >
+                <svg className="w-4 h-4 text-white/50 group-hover/arrow:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
           {/* Slider viewport */}
           <div
             ref={sliderRef}
@@ -307,62 +360,6 @@ export default function BannerSection() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Controls bar */}
-          <div className="flex items-center justify-between mt-8 px-2">
-            {/* Slide tabs */}
-            <div className="flex items-center gap-3">
-              {features.map((feature, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => goToSlide(idx)}
-                  className={`group/tab flex items-center gap-2.5 px-4 py-2.5 rounded-xl transition-all duration-400 ${
-                    activeSlide === idx
-                      ? "bg-white/[0.08] border border-white/10"
-                      : "bg-transparent border border-transparent hover:bg-white/[0.03]"
-                  }`}
-                >
-                  {/* Progress bar for active */}
-                  <div className="relative w-8 h-[3px] rounded-full bg-white/10 overflow-hidden">
-                    <div
-                      className="absolute inset-y-0 left-0 bg-primary rounded-full"
-                      style={{
-                        width: activeSlide === idx ? "100%" : "0%",
-                        transition: activeSlide === idx ? "width 5s linear" : "width 0.3s ease",
-                      }}
-                    />
-                  </div>
-                  <span className={`text-xs font-bold tracking-wide transition-colors ${
-                    activeSlide === idx ? "text-white" : "text-white/35 group-hover/tab:text-white/55"
-                  }`}>
-                    {feature.tag}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            {/* Arrow navigation */}
-            <div className="flex items-center gap-2">
-              <button
-                onClick={prevSlide}
-                className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 hover:border-white/15 transition-all group/arrow"
-                aria-label="Önceki"
-              >
-                <svg className="w-4 h-4 text-white/50 group-hover/arrow:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                onClick={nextSlide}
-                className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 hover:border-white/15 transition-all group/arrow"
-                aria-label="Sonraki"
-              >
-                <svg className="w-4 h-4 text-white/50 group-hover/arrow:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
