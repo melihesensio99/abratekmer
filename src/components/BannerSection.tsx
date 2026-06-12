@@ -35,6 +35,13 @@ const features: Feature[] = [
     title: "Sound Alerts from ABRA",
     desc: "Pil gücü kritik seviyeye ulaştığında hem mobil uygulamadan bildirim alın hem de sesli uyarı tonlarıyla durumu takip edin.",
   },
+  {
+    src: "/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (11).jpeg",
+    alt: "Faster Unlock, Smoother Exit",
+    tag: "HIZLI ÇIKIŞ",
+    title: "Faster Unlock, Smoother Exit",
+    desc: "Gelişmiş motor teknolojisi ile eskisinden çok daha hızlı kilit açma deneyimi yaşayın. Beklemeden anında geçiş yapın.",
+  },
 ];
 
 export default function BannerSection() {
@@ -159,53 +166,32 @@ export default function BannerSection() {
           {/* Background image */}
           <div className="relative w-full h-[420px] sm:h-[520px] lg:h-[580px] overflow-hidden">
             <img
-              src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (11).jpeg"
-              alt="Faster Unlock, Smoother Exit"
-              className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]"
+              src="/images/anasayfa/installation_hero.jpeg"
+              alt="ABRA Smart Lock PRO - Quick, easy and suitable Installation"
+              className="w-full h-full object-cover object-center transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]"
             />
-            {/* Subtle bottom gradient only — keeps image visible */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            {/* Subtle bottom gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </div>
 
-          {/* Compact glass panel — bottom left, doesn't cover the image */}
-          <div
-            className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 max-w-md"
-            style={{
-              opacity: heroVisible ? 1 : 0,
-              transform: heroVisible ? "translateY(0)" : "translateY(20px)",
-              transition: "all 0.8s ease 0.5s",
-            }}
-          >
-            <div className="bg-black/50 backdrop-blur-xl border border-white/10 rounded-2xl p-5 sm:p-6">
-              <span className="inline-flex items-center gap-2 text-primary font-bold text-[10px] tracking-[0.3em] uppercase mb-3">
-                <span className="w-5 h-[2px] bg-primary rounded-full" />
-                KİLİT MODLARI
-              </span>
-
-              <h3
-                className="text-xl sm:text-2xl font-black text-white mb-3 leading-[1.15] tracking-tight"
-                style={{ fontFamily: "var(--font-outfit)" }}
-              >
-                Faster Unlock, Smoother Exit.
-              </h3>
-
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-white/75 text-sm leading-relaxed font-medium">
-                  <span className="w-4 h-4 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5"><span className="w-1 h-1 rounded-full bg-primary" /></span>
-                  Daytime: Yarım kilit moduyla hızlı çıkış.
-                </li>
-                <li className="flex items-start gap-2 text-white/75 text-sm leading-relaxed font-medium">
-                  <span className="w-4 h-4 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5"><span className="w-1 h-1 rounded-full bg-primary" /></span>
-                  Nighttime: Tam kilit moduyla maksimum güvenlik.
-                </li>
-              </ul>
-            </div>
+          {/* Glass panel — bottom left */}
+          <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-auto sm:max-w-md glass p-6 rounded-2xl border border-white/10">
+            <span className="inline-flex items-center gap-2 text-primary font-bold text-[11px] tracking-[0.3em] uppercase mb-3">
+              <span className="w-5 h-[2px] bg-primary rounded-full" />
+              KOLAY KURULUM
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black text-white leading-tight" style={{ fontFamily: "var(--font-outfit)" }}>
+              Quick, Easy &amp; Suitable Installation
+            </h3>
+            <p className="text-white/55 text-sm mt-2 leading-relaxed">
+              Mevcut kapı ve kilit sisteminizi değiştirmeden, dakikalar içinde kurulumu tamamlayın.
+            </p>
           </div>
 
           {/* Decorative corner accent */}
           <div className="absolute top-6 right-6 sm:top-8 sm:right-8 flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-white/80 text-xs font-bold tracking-wide">ÖNCÜ ÖZELLİK</span>
+            <span className="text-white/80 text-xs font-bold tracking-wide">ABRA SMART LOCK PRO</span>
           </div>
         </div>
 
