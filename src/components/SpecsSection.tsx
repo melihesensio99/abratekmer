@@ -17,7 +17,7 @@ const specs = [
 
 export default function SpecsSection() {
   return (
-    <section id="specs" className="py-32 bg-background relative overflow-hidden">
+    <section id="specs" className="py-20 bg-background relative overflow-hidden">
       <div className="absolute top-1/4 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -25,14 +25,14 @@ export default function SpecsSection() {
         <motion.div
           initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
-          <span className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block">TEKNİK</span>
-          <h2 className="heading-section text-white mb-6" style={{ fontFamily: "var(--font-noto)" }}>
-            Teknik Detaylar
+          <span className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-3 block">DONANIM VE TEKNOLOJİ</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-noto)" }}>
+            Kusursuz Mühendislik
           </h2>
-          <p className="text-body-large max-w-2xl mx-auto">
-            ABRA Smart Lock PRO&apos;nun tüm teknik kapasitesini ve donanım özelliklerini inceleyin.
+          <p className="text-white/60 text-lg sm:text-xl max-w-2xl mx-auto">
+            ABRA Smart Lock PRO&apos;nun arkasındaki yenilikçi donanımı ve üstün teknik kapasiteyi keşfedin.
           </p>
         </motion.div>
 
