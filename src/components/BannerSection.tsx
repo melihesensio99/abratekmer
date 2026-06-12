@@ -263,20 +263,30 @@ export default function BannerSection() {
 
                     {/* Text side */}
                     <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-                      <span className="inline-flex items-center gap-2 text-primary font-bold text-[11px] tracking-[0.3em] uppercase mb-5">
+                      <span 
+                        className={`inline-flex items-center gap-2 text-primary font-bold text-[11px] tracking-[0.3em] uppercase mb-5 transition-all duration-700 delay-100 ${
+                          activeSlide === idx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                        }`}
+                      >
                         <span className="w-5 h-[2px] bg-primary rounded-full" />
                         {feature.tag}
                       </span>
 
                       <h3
-                        className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-5 leading-[1.1] tracking-tight"
+                        className={`text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-5 leading-[1.1] tracking-tight transition-all duration-700 delay-200 ${
+                          activeSlide === idx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                        }`}
                         style={{ fontFamily: "var(--font-outfit)" }}
                       >
                         {feature.title}
                       </h3>
 
                       {feature.desc && (
-                        <p className="text-white/60 text-[15px] sm:text-base leading-[1.75] font-medium">
+                        <p 
+                          className={`text-white/60 text-[15px] sm:text-base leading-[1.75] font-medium transition-all duration-700 delay-300 ${
+                            activeSlide === idx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                          }`}
+                        >
                           {feature.desc}
                         </p>
                       )}
