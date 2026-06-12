@@ -103,7 +103,7 @@ export default function HeroSection() {
             {/* Ana görsel */}
             <div
               className="relative w-full rounded-3xl overflow-hidden group/gallery shadow-xl touch-pan-y"
-              style={{ aspectRatio: "4/5", maxHeight: "550px" }}
+              style={{ aspectRatio: "3/4", maxHeight: "650px" }}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
