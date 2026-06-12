@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://abratekmer.vercel.app/sitemap.xml',
+    sitemap: 'https://www.abrasmarttech.com/sitemap.xml',
   }
 }
