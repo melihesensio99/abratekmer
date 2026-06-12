@@ -84,7 +84,7 @@ export default function VideosSection() {
           >
             <div className="text-left">
               <span className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block">VİDEO KÜTÜPHANESİ</span>
-              <h2 className="heading-section text-white mb-0" style={{ fontFamily: "var(--font-noto)" }}>
+              <h2 className="heading-section text-white mb-0" style={{ fontFamily: "var(--font-outfit)" }}>
                 Nasıl Çalışır?
               </h2>
             </div>

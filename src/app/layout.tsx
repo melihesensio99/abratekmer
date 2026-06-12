@@ -1,26 +1,17 @@
 import type { Metadata } from "next";
-import { Poppins, Nunito_Sans, Noto_Sans } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
 });
 
-const nunitoSans = Nunito_Sans({
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  variable: "--font-nunito",
   display: "swap",
-  weight: ["300", "400", "600", "700", "800"],
-});
-
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  variable: "--font-noto",
-  display: "swap",
-  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -63,15 +54,15 @@ export default function RootLayout({
   return (
     <html
       lang="tr"
-      className={`${poppins.variable} ${nunitoSans.variable} ${notoSans.variable} antialiased`}
+      className={`${inter.variable} ${outfit.variable} antialiased`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#0a0a0a" />
       </head>
       <body
-        className="min-h-screen flex flex-col"
-        style={{ fontFamily: "var(--font-nunito), var(--font-noto), sans-serif" }}
+        className="min-h-screen flex flex-col font-sans"
+        style={{ fontFamily: "var(--font-inter), sans-serif" }}
       >
         {children}
       </body>

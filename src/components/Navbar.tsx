@@ -39,7 +39,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="text-2xl font-black tracking-tighter text-black group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-noto)" }}>
+            <span className="text-2xl font-black tracking-tighter text-black group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-outfit)" }}>
               ABRA
             </span>
             <div className="w-1.5 h-1.5 rounded-full bg-primary" />

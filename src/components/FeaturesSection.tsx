@@ -55,7 +55,7 @@ export default function FeaturesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-10 text-center">
         <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-3 block">UYUMLULUK</span>
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5"
-          style={{ fontFamily: "var(--font-noto)" }}>
+          style={{ fontFamily: "var(--font-outfit)" }}>
           Her Kapıya Uyar
         </h2>
         <p className="text-white/55 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">

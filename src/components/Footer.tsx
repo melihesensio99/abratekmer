@@ -20,7 +20,7 @@ export default function Footer() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center gap-2 group cursor-pointer"
             >
-              <span className="text-2xl font-black tracking-tighter text-white group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-noto)" }}>
+              <span className="text-2xl font-black tracking-tighter text-white group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-outfit)" }}>
                 ABRA
               </span>
               <div className="w-1.5 h-1.5 rounded-full bg-primary" />

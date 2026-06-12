@@ -138,7 +138,7 @@ export default function BannerSection() {
           }}
         >
           <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-3 block">NEDEN ABRA?</span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5" style={{ fontFamily: "var(--font-noto)" }}>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5" style={{ fontFamily: "var(--font-outfit)" }}>
             Akıllı Güvenlik, Basit Kurulum
           </h2>
           <p className="text-white/45 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
@@ -184,7 +184,7 @@ export default function BannerSection() {
 
               <h3
                 className="text-xl sm:text-2xl font-black text-white mb-3 leading-[1.15] tracking-tight"
-                style={{ fontFamily: "var(--font-noto)" }}
+                style={{ fontFamily: "var(--font-outfit)" }}
               >
                 Faster Unlock, Smoother Exit.
               </h3>
@@ -284,7 +284,7 @@ export default function BannerSection() {
 
                       <h3
                         className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-5 leading-[1.1] tracking-tight"
-                        style={{ fontFamily: "var(--font-noto)" }}
+                        style={{ fontFamily: "var(--font-outfit)" }}
                       >
                         {feature.title}
                       </h3>
