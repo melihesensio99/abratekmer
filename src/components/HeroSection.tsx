@@ -96,14 +96,14 @@ export default function HeroSection() {
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/3 blur-[100px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-start">
 
           {/* ── Left: Gallery ── */}
-          <div className="flex flex-col gap-4">
-            {/* Ana görsel — 3:4 portrait, object-cover ile tam dolu */}
+          <div className="flex flex-col gap-4 max-w-lg mx-auto w-full sticky top-24">
+            {/* Ana görsel */}
             <div
               className="relative w-full rounded-3xl overflow-hidden group/gallery shadow-xl touch-pan-y"
-              style={{ aspectRatio: "3/4" }}
+              style={{ aspectRatio: "4/5", maxHeight: "550px" }}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
