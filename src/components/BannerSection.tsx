@@ -1,193 +1,53 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// Scroll-animated premium feature card
-function ProductFeatureCard({
-  src,
-  alt,
-  tag,
-  title,
-  desc,
-  points,
-  containImage = false,
-  index = 0,
-}: {
+type Feature = {
   src: string;
   alt: string;
-  tag?: string;
+  tag: string;
   title: string;
   desc?: string;
   points?: string[];
   containImage?: boolean;
-  index?: number;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [imageScale, setImageScale] = useState(1);
+};
 
-  // Scroll-triggered reveal
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setIsVisible(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    if (cardRef.current) obs.observe(cardRef.current);
-    return () => obs.disconnect();
-  }, []);
-
-  // Parallax-like scroll zoom on image
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!cardRef.current) return;
-      const rect = cardRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      // Calculate how far through the viewport the card is
-      const progress = 1 - rect.top / windowHeight;
-      // Clamp between 1 and 1.08 for subtle zoom
-      const scale = Math.min(Math.max(1 + progress * 0.06, 1), 1.08);
-      setImageScale(scale);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Alternate entrance direction: even from left, odd from right
-  const enterFromLeft = index % 2 === 0;
-  const translateX = enterFromLeft ? "-60px" : "60px";
-
-  return (
-    <div
-      ref={cardRef}
-      className="group flex flex-col bg-[#0c0c0c] border border-white/[0.06] rounded-[2rem] overflow-hidden h-full relative"
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible
-          ? "translateY(0) translateX(0)"
-          : `translateY(40px) translateX(${translateX})`,
-        transition: `opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) ${index * 0.15}s, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) ${index * 0.15}s`,
-      }}
-    >
-      {/* Hover glow overlay */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10 rounded-[2rem]"
-        style={{
-          background: "radial-gradient(ellipse at 50% 30%, rgba(229, 57, 53, 0.06), transparent 70%)",
-        }}
-      />
-
-      {/* Image area with parallax zoom */}
-      <div className="relative w-full h-[380px] sm:h-[480px] bg-[#080808] overflow-hidden">
-        {/* Subtle gradient overlay at bottom of image for depth */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0c0c0c] to-transparent z-[2] pointer-events-none" />
-
-        <img
-          ref={imageRef}
-          src={src}
-          alt={alt}
-          className={`w-full h-full select-none pointer-events-none transition-transform duration-[1.2s] ease-out ${
-            containImage ? "object-contain px-2 py-4" : "object-cover"
-          }`}
-          style={{
-            transform: `scale(${imageScale})`,
-            willChange: "transform",
-          }}
-        />
-      </div>
-
-      {/* Accent gradient line separator */}
-      <div className="h-[2px] w-full relative overflow-hidden">
-        <div
-          className="absolute inset-0 transition-transform duration-700 ease-out"
-          style={{
-            background: "linear-gradient(90deg, transparent 0%, #e53935 30%, #ff6659 70%, transparent 100%)",
-            transform: isVisible ? "translateX(0)" : "translateX(-100%)",
-            transitionDelay: `${0.5 + index * 0.15}s`,
-          }}
-        />
-      </div>
-
-      {/* Text area */}
-      <div className="p-8 sm:p-10 flex flex-col justify-start text-left flex-grow relative">
-        {tag && (
-          <span
-            className="text-primary font-bold text-[11px] tracking-[0.3em] uppercase mb-4 block relative w-fit"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(12px)",
-              transition: `all 0.6s ease ${0.4 + index * 0.15}s`,
-            }}
-          >
-            {tag}
-            {/* Tag shimmer */}
-            <span
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-              style={{
-                backgroundSize: "200% 100%",
-                animation: isVisible ? "shimmer 3s ease-in-out infinite" : "none",
-                animationDelay: `${1 + index * 0.3}s`,
-              }}
-            />
-          </span>
-        )}
-        <h3
-          className="text-[1.65rem] sm:text-3xl font-black text-white mb-4 leading-[1.15] tracking-[-0.01em]"
-          style={{
-            fontFamily: "var(--font-noto)",
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(16px)",
-            transition: `all 0.7s ease ${0.5 + index * 0.15}s`,
-          }}
-        >
-          {title}
-        </h3>
-        {desc && (
-          <p
-            className="text-white/60 text-[15px] sm:text-base leading-[1.7] font-medium"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(14px)",
-              transition: `all 0.7s ease ${0.6 + index * 0.15}s`,
-            }}
-          >
-            {desc}
-          </p>
-        )}
-        {points && (
-          <ul className="space-y-3 mt-2">
-            {points.map((pt, idx) => (
-              <li
-                key={idx}
-                className="flex items-start gap-2.5 text-white/70 text-[15px] sm:text-base leading-[1.7] font-medium"
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(14px)",
-                  transition: `all 0.6s ease ${0.65 + index * 0.15 + idx * 0.1}s`,
-                }}
-              >
-                <span className="text-primary mt-[6px] flex-shrink-0 text-[8px]">◆</span>
-                <span>{pt}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      {/* Bottom border glow on hover */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/40 transition-all duration-700" />
-    </div>
-  );
-}
+const features: Feature[] = [
+  {
+    src: "/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (10).jpeg",
+    alt: "Quiet Unlocking at Night",
+    tag: "GÜVENLİK MODU",
+    title: "Quiet Unlocking at Night",
+    desc: "Gece geç saatlerde eve döndüğünüzde motor sesini minimuma indirin. Ailenizi ve komşularınızı uyandırmadan sessizce kapınızı açın.",
+    containImage: true,
+  },
+  {
+    src: "/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (12).jpeg",
+    alt: "USB-C Acil Şarj Desteği",
+    tag: "GÜÇ YÖNETİMİ",
+    title: "USB-C Acil Şarj Desteği",
+    desc: "Pil seviyesi bittiğinde, dışarıdan powerbank ve USB-C yardımıyla acil şarj sağlayarak kapıda kalma riskini tamamen yok edin.",
+  },
+  {
+    src: "/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (13).jpeg",
+    alt: "Sound Alerts from ABRA",
+    tag: "AKILLI UYARILAR",
+    title: "Sound Alerts from ABRA",
+    desc: "Pil gücü kritik seviyeye ulaştığında hem mobil uygulamadan bildirim alın hem de sesli uyarı tonlarıyla durumu takip edin.",
+  },
+];
 
 export default function BannerSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -198,17 +58,79 @@ export default function BannerSection() {
     return () => obs.disconnect();
   }, []);
 
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setHeroVisible(true); },
+      { threshold: 0.2 }
+    );
+    if (heroRef.current) obs.observe(heroRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  // Autoplay for slider
+  useEffect(() => {
+    autoplayRef.current = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % features.length);
+    }, 5000);
+    return () => {
+      if (autoplayRef.current) clearInterval(autoplayRef.current);
+    };
+  }, []);
+
+  const resetAutoplay = () => {
+    if (autoplayRef.current) clearInterval(autoplayRef.current);
+    autoplayRef.current = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % features.length);
+    }, 5000);
+  };
+
+  const goToSlide = (idx: number) => {
+    setActiveSlide(idx);
+    resetAutoplay();
+  };
+
+  const nextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % features.length);
+    resetAutoplay();
+  };
+
+  const prevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + features.length) % features.length);
+    resetAutoplay();
+  };
+
+  // Touch / drag handling
+  const handleDragStart = (clientX: number) => {
+    setIsDragging(true);
+    setDragStartX(clientX);
+    setDragOffset(0);
+  };
+
+  const handleDragMove = (clientX: number) => {
+    if (!isDragging) return;
+    setDragOffset(clientX - dragStartX);
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    if (dragOffset > 60) prevSlide();
+    else if (dragOffset < -60) nextSlide();
+    setDragOffset(0);
+  };
+
+  const current = features[activeSlide];
+
   return (
     <section ref={sectionRef} className="pt-12 pb-24 bg-black overflow-hidden relative">
-      {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/[0.03] rounded-full blur-[150px] pointer-events-none" />
+      {/* Ambient background */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
         <div
-          ref={titleRef}
-          className="text-center py-6"
+          className="text-center py-6 mb-8"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? "translateY(0)" : "translateY(40px)",
@@ -222,67 +144,230 @@ export default function BannerSection() {
           <p className="text-white/45 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
             Mevcut kapınızı ve kilit sisteminizi değiştirmeden evinizi akıllı hale getirin.
           </p>
+        </div>
 
-          {/* Decorative animated line under title */}
-          <div className="flex justify-center mt-8">
-            <div className="relative w-24 h-[2px] overflow-hidden rounded-full">
-              <div
-                className="absolute inset-0 rounded-full"
+        {/* ═══ HERO CARD — Full width, immersive ═══ */}
+        <div
+          ref={heroRef}
+          className="relative rounded-[2.5rem] overflow-hidden mb-10 group cursor-default"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible ? "translateY(0) scale(1)" : "translateY(50px) scale(0.97)",
+            transition: "all 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s",
+          }}
+        >
+          {/* Background image */}
+          <div className="relative w-full h-[420px] sm:h-[520px] lg:h-[580px] overflow-hidden">
+            <img
+              src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (11).jpeg"
+              alt="Faster Unlock, Smoother Exit"
+              className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]"
+            />
+            {/* Dark gradient overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+          </div>
+
+          {/* Content overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12 lg:p-16">
+            <div className="max-w-2xl">
+              <span
+                className="inline-flex items-center gap-2 text-primary font-bold text-[11px] tracking-[0.3em] uppercase mb-4"
                 style={{
-                  background: "linear-gradient(90deg, transparent, #e53935, transparent)",
-                  transform: isVisible ? "translateX(0)" : "translateX(-100%)",
-                  transition: "transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s",
+                  opacity: heroVisible ? 1 : 0,
+                  transform: heroVisible ? "translateY(0)" : "translateY(20px)",
+                  transition: "all 0.7s ease 0.5s",
                 }}
-              />
+              >
+                <span className="w-6 h-[2px] bg-primary rounded-full" />
+                KİLİT MODLARI
+              </span>
+
+              <h3
+                className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-[1.1] tracking-tight"
+                style={{
+                  fontFamily: "var(--font-noto)",
+                  opacity: heroVisible ? 1 : 0,
+                  transform: heroVisible ? "translateY(0)" : "translateY(24px)",
+                  transition: "all 0.8s ease 0.6s",
+                }}
+              >
+                Faster Unlock, Smoother Exit.
+              </h3>
+
+              <ul
+                className="space-y-3 max-w-xl"
+                style={{
+                  opacity: heroVisible ? 1 : 0,
+                  transform: heroVisible ? "translateY(0)" : "translateY(20px)",
+                  transition: "all 0.8s ease 0.75s",
+                }}
+              >
+                <li className="flex items-start gap-3 text-white/70 text-base sm:text-lg leading-relaxed font-medium">
+                  <span className="w-5 h-5 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-1"><span className="w-1.5 h-1.5 rounded-full bg-primary" /></span>
+                  Daytime (Gündüz): Yarım kilit moduyla hızlı çıkış.
+                </li>
+                <li className="flex items-start gap-3 text-white/70 text-base sm:text-lg leading-relaxed font-medium">
+                  <span className="w-5 h-5 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-1"><span className="w-1.5 h-1.5 rounded-full bg-primary" /></span>
+                  Nighttime (Gece): Tam kilit moduyla maksimum güvenlik.
+                </li>
+              </ul>
             </div>
+          </div>
+
+          {/* Decorative corner accent */}
+          <div className="absolute top-6 right-6 sm:top-8 sm:right-8 flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+            <span className="text-white/80 text-xs font-bold tracking-wide">ÖNCÜ ÖZELLİK</span>
           </div>
         </div>
 
-        {/* 2x2 Grid — each card animates independently */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-          <ProductFeatureCard
-            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (10).jpeg"
-            alt="Quiet Unlocking at Night"
-            tag="GÜVENLİK MODU"
-            title="Quiet Unlocking at Night"
-            desc="Gece geç saatlerde eve döndüğünüzde motor sesini minimuma indirin. Ailenizi ve komşularınızı uyandırmadan sessizce kapınızı açın."
-            containImage={true}
-            index={0}
-          />
+        {/* ═══ SLIDER — 3 feature cards with swipe ═══ */}
+        <div
+          className="relative"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(40px)",
+            transition: "all 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s",
+          }}
+        >
+          {/* Slider viewport */}
+          <div
+            ref={sliderRef}
+            className="overflow-hidden rounded-[2rem] relative"
+            onMouseDown={(e) => handleDragStart(e.clientX)}
+            onMouseMove={(e) => handleDragMove(e.clientX)}
+            onMouseUp={handleDragEnd}
+            onMouseLeave={handleDragEnd}
+            onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+            onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
+            onTouchEnd={handleDragEnd}
+          >
+            <div
+              className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              style={{
+                transform: `translateX(calc(-${activeSlide * 100}% + ${isDragging ? dragOffset : 0}px))`,
+                transition: isDragging ? "none" : undefined,
+              }}
+            >
+              {features.map((feature, idx) => (
+                <div
+                  key={idx}
+                  className="w-full flex-shrink-0"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-2 bg-[#0c0c0c] border border-white/[0.06] rounded-[2rem] overflow-hidden min-h-[380px] sm:min-h-[440px]">
+                    {/* Image side */}
+                    <div className="relative h-[300px] sm:h-[380px] lg:h-full overflow-hidden">
+                      <img
+                        src={feature.src}
+                        alt={feature.alt}
+                        className={`w-full h-full select-none transition-transform duration-700 ease-out object-cover ${
+                          activeSlide === idx ? "scale-100" : "scale-110"
+                        }`}
+                      />
+                      {/* Subtle gradient on the right edge for desktop */}
+                      <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-24 bg-gradient-to-l from-[#0c0c0c] to-transparent" />
+                      {/* Bottom gradient for mobile */}
+                      <div className="lg:hidden absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#0c0c0c] to-transparent" />
+                    </div>
 
-          <ProductFeatureCard
-            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (11).jpeg"
-            alt="Faster Unlock, Smoother Exit"
-            tag="KİLİT MODLARI"
-            title="Faster Unlock, Smoother Exit."
-            points={[
-              "Daytime (Gündüz): Yarım kilit moduyla hızlı çıkış.",
-              "Nighttime (Gece): Tam kilit moduyla maksimum güvenlik."
-            ]}
-            index={1}
-          />
+                    {/* Text side */}
+                    <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+                      <span className="inline-flex items-center gap-2 text-primary font-bold text-[11px] tracking-[0.3em] uppercase mb-5">
+                        <span className="w-5 h-[2px] bg-primary rounded-full" />
+                        {feature.tag}
+                      </span>
 
-          <ProductFeatureCard
-            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (12).jpeg"
-            alt="USB-C Acil Şarj Desteği"
-            tag="GÜÇ YÖNETİMİ"
-            title="USB-C Acil Şarj Desteği"
-            desc="Pil seviyesi bittiğinde, dışarıdan powerbank ve USB-C yardımıyla acil şarj sağlayarak kapıda kalma riskini tamamen yok edin."
-            index={2}
-          />
+                      <h3
+                        className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-5 leading-[1.1] tracking-tight"
+                        style={{ fontFamily: "var(--font-noto)" }}
+                      >
+                        {feature.title}
+                      </h3>
 
-          <ProductFeatureCard
-            src="/images/new/WhatsApp Image 2026-06-04 at 10.58.34 (13).jpeg"
-            alt="Sound Alerts from ABRA"
-            tag="AKILLI UYARILAR"
-            title="Sound Alerts from ABRA"
-            desc="Pil gücü kritik seviyeye ulaştığında hem mobil uygulamadan bildirim alın hem de sesli uyarı tonlarıyla durumu takip edin."
-            index={3}
-          />
+                      {feature.desc && (
+                        <p className="text-white/60 text-[15px] sm:text-base leading-[1.75] font-medium">
+                          {feature.desc}
+                        </p>
+                      )}
+
+                      {feature.points && (
+                        <ul className="space-y-4 mt-1">
+                          {feature.points.map((pt, pidx) => (
+                            <li key={pidx} className="flex items-start gap-3 text-white/65 text-[15px] sm:text-base leading-[1.7] font-medium">
+                              <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                              </span>
+                              <span>{pt}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Controls bar */}
+          <div className="flex items-center justify-between mt-8 px-2">
+            {/* Slide tabs */}
+            <div className="flex items-center gap-3">
+              {features.map((feature, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToSlide(idx)}
+                  className={`group/tab flex items-center gap-2.5 px-4 py-2.5 rounded-xl transition-all duration-400 ${
+                    activeSlide === idx
+                      ? "bg-white/[0.08] border border-white/10"
+                      : "bg-transparent border border-transparent hover:bg-white/[0.03]"
+                  }`}
+                >
+                  {/* Progress bar for active */}
+                  <div className="relative w-8 h-[3px] rounded-full bg-white/10 overflow-hidden">
+                    <div
+                      className="absolute inset-y-0 left-0 bg-primary rounded-full"
+                      style={{
+                        width: activeSlide === idx ? "100%" : "0%",
+                        transition: activeSlide === idx ? "width 5s linear" : "width 0.3s ease",
+                      }}
+                    />
+                  </div>
+                  <span className={`text-xs font-bold tracking-wide transition-colors ${
+                    activeSlide === idx ? "text-white" : "text-white/35 group-hover/tab:text-white/55"
+                  }`}>
+                    {feature.tag}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Arrow navigation */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prevSlide}
+                className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 hover:border-white/15 transition-all group/arrow"
+                aria-label="Önceki"
+              >
+                <svg className="w-4 h-4 text-white/50 group-hover/arrow:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={nextSlide}
+                className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 hover:border-white/15 transition-all group/arrow"
+                aria-label="Sonraki"
+              >
+                <svg className="w-4 h-4 text-white/50 group-hover/arrow:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
 
       </div>
     </section>
   );
 }
-// Fresh build trigger comment to ensure Vercel completes deploy pipeline for 2x2 grid.
