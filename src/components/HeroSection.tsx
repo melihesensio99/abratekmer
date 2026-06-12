@@ -13,7 +13,7 @@ const stores = [
     badge: "Popüler",
     logo: (
       <div className="flex items-center justify-center w-16 h-12 rounded-xl bg-white transition-colors p-2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Trendyol_logo_orange.svg" alt="Trendyol" className="w-full h-full object-contain" />
+        <img src="/images/logos/trendyol.svg" alt="Trendyol" className="w-full h-full object-contain" />
       </div>
     ),
   },
@@ -25,7 +25,7 @@ const stores = [
     badge: "Tavsiye Edilen",
     logo: (
       <div className="flex items-center justify-center w-16 h-12 rounded-xl bg-white transition-colors p-2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="w-full h-full object-contain pt-1" />
+        <img src="/images/logos/amazon.svg" alt="Amazon" className="w-full h-full object-contain pt-1" />
       </div>
     ),
   },
@@ -37,7 +37,7 @@ const stores = [
     badge: "Hızlı Teslimat",
     logo: (
       <div className="flex items-center justify-center w-16 h-12 rounded-xl bg-white transition-colors p-2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Hepsiburada_logo.svg" alt="Hepsiburada" className="w-full h-full object-contain" />
+        <img src="/images/logos/hepsiburada.svg" alt="Hepsiburada" className="w-full h-full object-contain" />
       </div>
     ),
   },
