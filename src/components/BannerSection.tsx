@@ -218,51 +218,27 @@ export default function BannerSection() {
             transition: "all 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s",
           }}
         >
-          {/* Tab buttons + arrows — ABOVE the slider */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 px-1">
-            <div className="flex items-center gap-2 sm:gap-3">
-              {features.map((feature, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => goToSlide(idx)}
-                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 ${
-                    activeSlide === idx
-                      ? "bg-primary text-white shadow-lg shadow-primary/25"
-                      : "bg-white/[0.06] text-white/45 border border-white/[0.08] hover:bg-white/[0.1] hover:text-white/70"
-                  }`}
-                >
-                  {feature.tag}
-                </button>
-              ))}
-            </div>
-
-            {/* Arrow navigation */}
-            <div className="flex items-center gap-2">
+          {/* Tab buttons — centered above the slider */}
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6">
+            {features.map((feature, idx) => (
               <button
-                onClick={prevSlide}
-                className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 hover:border-white/15 transition-all group/arrow"
-                aria-label="Önceki"
+                key={idx}
+                onClick={() => goToSlide(idx)}
+                className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 ${
+                  activeSlide === idx
+                    ? "bg-primary text-white shadow-lg shadow-primary/25"
+                    : "bg-white/[0.06] text-white/45 border border-white/[0.08] hover:bg-white/[0.1] hover:text-white/70"
+                }`}
               >
-                <svg className="w-4 h-4 text-white/50 group-hover/arrow:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
+                {feature.tag}
               </button>
-              <button
-                onClick={nextSlide}
-                className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 hover:border-white/15 transition-all group/arrow"
-                aria-label="Sonraki"
-              >
-                <svg className="w-4 h-4 text-white/50 group-hover/arrow:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+            ))}
           </div>
 
-          {/* Slider viewport */}
+          {/* Slider viewport with side arrows */}
           <div
             ref={sliderRef}
-            className="overflow-hidden rounded-[2rem] relative"
+            className="overflow-hidden rounded-[2rem] relative group/slider"
             onMouseDown={(e) => handleDragStart(e.clientX)}
             onMouseMove={(e) => handleDragMove(e.clientX)}
             onMouseUp={handleDragEnd}
@@ -336,6 +312,26 @@ export default function BannerSection() {
                 </div>
               ))}
             </div>
+
+            {/* Slider overlay arrow controls */}
+            <button
+              onClick={prevSlide}
+              className="absolute top-1/2 -translate-y-1/2 left-4 z-10 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-black/60 hover:scale-105 transition-all opacity-0 group-hover/slider:opacity-100 hidden sm:flex"
+              aria-label="Önceki"
+            >
+              <svg className="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute top-1/2 -translate-y-1/2 right-4 z-10 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-black/60 hover:scale-105 transition-all opacity-0 group-hover/slider:opacity-100 hidden sm:flex"
+              aria-label="Sonraki"
+            >
+              <svg className="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
 
