@@ -174,8 +174,8 @@ export default function BannerSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </div>
 
-          {/* Glass panel — bottom left */}
-          <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-auto sm:max-w-md glass p-6 rounded-2xl border border-white/10">
+          {/* Glass panel — bottom right */}
+          <div className="absolute bottom-6 right-6 left-6 sm:bottom-8 sm:right-8 sm:left-auto sm:max-w-md glass p-6 rounded-2xl border border-white/10">
             <span className="inline-flex items-center gap-2 text-primary font-bold text-[11px] tracking-[0.3em] uppercase mb-3">
               <span className="w-5 h-[2px] bg-primary rounded-full" />
               KOLAY KURULUM
