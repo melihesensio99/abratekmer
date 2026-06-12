@@ -12,8 +12,8 @@ const stores = [
     description: "Yetkili ABRA Resmi Satıcı Mağazası",
     badge: "Popüler",
     logo: (
-      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#f27a1a]/10 group-hover:bg-[#f27a1a]/20 transition-colors">
-        <span className="text-xl font-black text-[#f27a1a]">ty</span>
+      <div className="flex items-center justify-center w-16 h-12 rounded-xl bg-white transition-colors p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Trendyol_logo_orange.svg" alt="Trendyol" className="w-full h-full object-contain" />
       </div>
     ),
   },
@@ -24,8 +24,8 @@ const stores = [
     description: "Hızlı Gönderim & Amazon Güvencesi",
     badge: "Tavsiye Edilen",
     logo: (
-      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#232f3e]/10 group-hover:bg-[#232f3e]/20 transition-colors">
-        <span className="text-base font-extrabold text-[#232f3e] tracking-tighter">a</span>
+      <div className="flex items-center justify-center w-16 h-12 rounded-xl bg-white transition-colors p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="w-full h-full object-contain pt-1" />
       </div>
     ),
   },
@@ -36,8 +36,8 @@ const stores = [
     description: "Kolay İade & Taksit Seçenekleri",
     badge: "Hızlı Teslimat",
     logo: (
-      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#ff6000]/10 group-hover:bg-[#ff6000]/20 transition-colors">
-        <span className="text-lg font-black text-[#ff6000]">hb</span>
+      <div className="flex items-center justify-center w-16 h-12 rounded-xl bg-white transition-colors p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Hepsiburada_logo.svg" alt="Hepsiburada" className="w-full h-full object-contain" />
       </div>
     ),
   },
