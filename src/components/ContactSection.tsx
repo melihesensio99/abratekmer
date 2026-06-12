@@ -26,7 +26,7 @@ export default function ContactSection() {
           {/* Left: Text */}
           <div className={`lg:w-5/12 text-center lg:text-left transition-all duration-700 opacity-100 translate-y-0`}>
             <span className="text-primary font-bold text-xs tracking-[0.3em] uppercase mb-5 block">BİZE ULAŞIN</span>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight" style={{ fontFamily: "var(--font-outfit)" }}>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight" style={{ fontFamily: "var(--font-space)" }}>
               Sorularınız için <br className="hidden lg:block"/> buradayız.
             </h2>
             <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">

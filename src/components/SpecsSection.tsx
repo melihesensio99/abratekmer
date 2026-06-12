@@ -28,7 +28,7 @@ export default function SpecsSection() {
           className="text-center mb-10"
         >
           <span className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-3 block">DONANIM VE TEKNOLOJİ</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-outfit)" }}>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-space)" }}>
             Kusursuz Mühendislik
           </h2>
           <p className="text-white/60 text-lg sm:text-xl max-w-2xl mx-auto">

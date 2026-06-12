@@ -196,7 +196,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-5 text-black leading-[1.05]"
-              style={{ fontFamily: "var(--font-outfit)" }}
+              style={{ fontFamily: "var(--font-space)" }}
             >
               ABRA Smart Lock <span className="text-primary">PRO</span>
             </motion.h1>
@@ -328,7 +328,7 @@ export default function HeroSection() {
               </button>
 
               <span className="text-primary font-extrabold text-xs tracking-widest uppercase mb-2 block">ABRA SMART LOCK PRO</span>
-              <h3 className="text-2xl sm:text-3xl font-black text-black mb-2" style={{ fontFamily: "var(--font-outfit)" }}>Nereden Satın Almak İstersiniz?</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-black mb-2" style={{ fontFamily: "var(--font-space)" }}>Nereden Satın Almak İstersiniz?</h3>
               <p className="text-gray-500 text-sm mb-8">Güvendiğiniz platformdan kolayca sipariş verin</p>
 
               <div className="space-y-4">

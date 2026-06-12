@@ -145,7 +145,7 @@ export default function BannerSection() {
           }}
         >
           <span className="text-primary font-bold text-xs tracking-[0.25em] uppercase mb-3 block">NEDEN ABRA?</span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5" style={{ fontFamily: "var(--font-outfit)" }}>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5" style={{ fontFamily: "var(--font-space)" }}>
             Akıllı Güvenlik, Basit Kurulum
           </h2>
           <p className="text-white/45 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
@@ -180,7 +180,7 @@ export default function BannerSection() {
               <span className="w-5 h-[2px] bg-primary rounded-full" />
               KOLAY KURULUM
             </span>
-            <h3 className="text-xl sm:text-2xl font-black text-white leading-tight" style={{ fontFamily: "var(--font-outfit)" }}>
+            <h3 className="text-xl sm:text-2xl font-black text-white leading-tight" style={{ fontFamily: "var(--font-space)" }}>
               Quick, Easy &amp; Suitable Installation
             </h3>
             <p className="text-white/55 text-sm mt-2 leading-relaxed">
@@ -276,7 +276,7 @@ export default function BannerSection() {
                         className={`text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-5 leading-[1.1] tracking-tight transition-all duration-700 delay-200 ${
                           activeSlide === idx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                         }`}
-                        style={{ fontFamily: "var(--font-outfit)" }}
+                        style={{ fontFamily: "var(--font-space)" }}
                       >
                         {feature.title}
                       </h3>

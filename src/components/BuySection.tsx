@@ -39,7 +39,7 @@ export default function BuySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <span className="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block">SATIN AL</span>
-          <h2 className="heading-section text-white mb-6" style={{ fontFamily: "var(--font-outfit)" }}>
+          <h2 className="heading-section text-white mb-6" style={{ fontFamily: "var(--font-space)" }}>
             Hemen Sahip Olun
           </h2>
           <p className="text-body-large max-w-2xl mx-auto">
@@ -71,7 +71,7 @@ export default function BuySection() {
               <div className="space-y-8">
                 <div>
                   <p className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3">ABRA PRODUCT DESIGN</p>
-                  <h3 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight" style={{ fontFamily: "var(--font-outfit)" }}>
+                  <h3 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight" style={{ fontFamily: "var(--font-space)" }}>
                     Smart Lock <span className="text-primary">PRO</span>
                   </h3>
                 </div>
